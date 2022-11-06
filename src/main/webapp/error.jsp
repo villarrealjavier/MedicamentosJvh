@@ -8,8 +8,8 @@
 		<link rel="stylesheet" type="text/css" href="css/error.css">
  
 </head>
-<body background="images/fondo.svg">
-      <a href="login.jsp"><img src="images/icono2.png" width="110px" height="100px" id="logo"></a> 
+<body background="images/errorPagina.png">
+      <a href="Login.jsp"><img src="images/iconoSinFondo.png" width="110px" height="100px" id="logo"></a> 
             <hr>
             <div id="izq">
                 

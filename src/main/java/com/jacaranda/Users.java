@@ -11,7 +11,7 @@ public class Users {
 	private String user;
 	private String pass;
 	private boolean admin;
-	private String namePerson;
+	private String name;
 	private String surname;
 	private LocalDate fecha;
 	private String genero;
@@ -26,7 +26,7 @@ public Users(String user, String pass, boolean admin, String namePerson, String 
 	this.user = user;
 	this.pass = pass;
 	this.admin = admin;
-	this.namePerson = namePerson;
+	this.name = namePerson;
 	this.surname = surname;
 	this.fecha = fecha;
 	this.genero = genero;
@@ -52,10 +52,10 @@ public void setAdmin(boolean admin) {
 	this.admin = admin;
 }
 public String getNamePerson() {
-	return namePerson;
+	return name;
 }
 public void setNamePerson(String namePerson) {
-	this.namePerson = namePerson;
+	this.name = namePerson;
 }
 public String getSurname() {
 	return surname;

@@ -3,10 +3,12 @@ package com.jacaranda;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
 public class Medicine {
+	@Id
 	private int id;
 	private String name;
 	private String description;

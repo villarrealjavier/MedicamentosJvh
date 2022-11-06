@@ -28,43 +28,44 @@ public class Index extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.getWriter().append("<!DOCTYPE html>"
-//				+ "<html>"
-//				+ "<head>"
-//				+ "<title>"
-//				+ "Catalogo Medicinas"
-//				+ "</title>"
-//				+ "<meta charset='UTF-8'>"
-//				+ "<body>"
-//				+ "<div>"
-//				+ "<table>"
-//				+ "<tr>"
-//				+ "<th>Id: </th>"
-//				+ "<th>Name: </th>"
-//				+ "<th>Description: </th>"
-//				+ "<th>Price: </th>"
-//				+ "</tr>"
-//				+  Iterator<Medicine> iterador = CRUDMedicine.getMedicines();
-//				+ while(iterador.hasNext()) {
-//					+ Medicine m = iterador.next();
-//					+ "<tr>"
-//					+ "<th>" + m.getId() + "</th>"
-//					+ "<th>" + m.getName()+ "</th>"
-//					+ "<th>" + m.getDescription() + "</th>"
-//					+ "<th>" + m.getPrice() + "</th>"
-//					+ "</tr>" + }
-//					
-//				
-//				+ "</table>"
-//				+ "</div>"
-//				+ "</body>"
-//				
-//				+ "</head>"
-//				
-//				+ "</html>");
-//	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("<!DOCTYPE html>"
+				+ "<html>"
+				+ "<head>"
+				+ "<meta charset=\"UTF-8\">"
+				+ "<title>"
+				+ "Catalogo Medicinas"
+				+ "</title>"
+				+ "<link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>"
+				+ "</head>"
+				+ "<body background='posibleFondo.png'>"
+				+ "<div>"
+				+ "<table border='2'>"
+				+ "<tr>"
+				+ "<th id='id'>Id: </th>"
+				+ "<th id='name'>Name: </th>"
+				+ "<th id='description'>Description: </th>"
+				+ "<th id='price'>Price: </th>"
+				+ "</tr>");
+				Iterator<Medicine> iterador = CRUDMedicine.getMedicines().iterator();
+				while(iterador.hasNext()) {
+					 Medicine m = iterador.next();
+							 
+					response.getWriter().append("<tr>"
+					+ "<td>" + m.getId() + "</td>"
+					+ "<td>" + m.getName()+ "</td>"
+					+ "<td>" + m.getDescription() + "</td>"
+					+ "<td>" + m.getPrice() + "</td>"
+					+ "</tr>"); 
+					}
+	
+				response.getWriter().append( "</table>"
+				+ "</div>"
+				+ "</body>"
+				+ "</head>"
+				+ "</html>");
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
