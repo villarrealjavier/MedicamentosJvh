@@ -9,27 +9,27 @@ import javax.persistence.Id;
 public class Users {
 	@Id
 	private String user;
-	private String pass;
-	private boolean admin;
+	private String password;
+	private int admin;
 	private String name;
 	private String surname;
-	private LocalDate fecha;
-	private String genero;
+	private LocalDate birthday;
+	private String gender;
 
 //CONSTRUCTOR
 public Users() {
 	
 }
-public Users(String user, String pass, boolean admin, String namePerson, String surname, LocalDate fecha,
+public Users(String user, String pass, int admin, String namePerson, String surname, LocalDate fecha,
 		String genero) {
 	super();
 	this.user = user;
-	this.pass = pass;
+	this.password = pass;
 	this.admin = admin;
 	this.name = namePerson;
 	this.surname = surname;
-	this.fecha = fecha;
-	this.genero = genero;
+	this.birthday = fecha;
+	this.gender = genero;
 }
 
 //GETTERS AND SETTERS
@@ -40,15 +40,15 @@ public void setUser(String user) {
 	this.user = user;
 }
 public String getPass() {
-	return pass;
+	return password;
 }
 public void setPass(String pass) {
-	this.pass = pass;
+	this.password = pass;
 }
-public boolean isAdmin() {
+public int isAdmin() {
 	return admin;
 }
-public void setAdmin(boolean admin) {
+public void setAdmin(int admin) {
 	this.admin = admin;
 }
 public String getNamePerson() {
@@ -64,16 +64,16 @@ public void setSurname(String surname) {
 	this.surname = surname;
 }
 public LocalDate getFecha() {
-	return fecha;
+	return birthday;
 }
 public void setFecha(LocalDate fecha) {
-	this.fecha = fecha;
+	this.birthday = fecha;
 }
 public String getGenero() {
-	return genero;
+	return gender;
 }
 public void setGenero(String genero) {
-	this.genero = genero;
+	this.gender = genero;
 }
 
 

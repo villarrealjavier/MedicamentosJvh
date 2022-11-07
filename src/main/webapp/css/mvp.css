@@ -48,8 +48,8 @@ article aside {
 }
 
 body {
-    background: var(--color-bg);
-    color: var(--color-text);
+ 	background-image: url("images/fondo.png");
+    color: var(--color-text); 
     font-family: var(--font-family);
     line-height: var(--line-height);
     margin: 0;

@@ -13,10 +13,14 @@
 		<title>Login</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
+        
 </head>
 <body background="images/fondo.png">
 	<div id="container">
     	<img src="images/iconoSinFondo.png" width="200px" height="150px" id="logo">
+    	
+    	<div id="registro">
+    	</div>
     
                      
         <div id="centroLogin">
@@ -41,7 +45,7 @@
 	            <p id="textoContrasena">Contraseña: 
 	            <input type="password" required name="password" id="password"> <img src="images/password.png" id="passLogo"></p>
 	           
-                <p><input type="submit" id="Enviar" value="Enviar"></p>
+                <p><a href="registro.jsp" id="link"><b>Registrate Aquí</b></a>  <input type="submit" id="Enviar" value="Enviar"></p>
           	</form>
        	</div>
    	</div>

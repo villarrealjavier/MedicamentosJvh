@@ -47,8 +47,11 @@ public class Index extends HttpServlet {
 				+ "<th id='name'>Name: </th>"
 				+ "<th id='description'>Description: </th>"
 				+ "<th id='price'>Price: </th>"
+				+ "<th id='price'>Name Category: </th>"
 				+ "</tr>");
-				Iterator<Medicine> iterador = CRUDMedicine.getMedicines().iterator();
+				List<Medicine> lista = null;
+				lista = CRUDMedicine.getMedicines();
+				Iterator<Medicine> iterador = lista.iterator();
 				while(iterador.hasNext()) {
 					 Medicine m = iterador.next();
 							 
@@ -57,6 +60,7 @@ public class Index extends HttpServlet {
 					+ "<td>" + m.getName()+ "</td>"
 					+ "<td>" + m.getDescription() + "</td>"
 					+ "<td>" + m.getPrice() + "</td>"
+					+ "<td>" + m.getCategory().getName() + "</td>"
 					+ "</tr>"); 
 					}
 	

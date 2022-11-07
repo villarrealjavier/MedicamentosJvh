@@ -32,7 +32,7 @@ public class UtilUsers {
 			try {
 				
 			    Session session = Conn.getSession();
-			    Query<Users> query = session.createQuery("SELECT p FROM com.jacaranda.Users p WHERE user='" + name + "'and pass='"+passEncriptada+"'",Users.class);
+			    Query<Users> query = session.createQuery("SELECT p FROM com.jacaranda.Users p WHERE user='" + name + "'and password='"+passEncriptada+"'",Users.class);
 			    if(!query.getResultList().isEmpty()) {
 			        valid = true;
 			    
@@ -42,6 +42,8 @@ public class UtilUsers {
 			}
 			return valid;
 		}
+		
+		
 		
 	
 }

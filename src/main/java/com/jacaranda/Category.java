@@ -2,40 +2,44 @@ package com.jacaranda;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
 @Entity
 public class Category {
 	@Id
-	private int id;
+	@Column(name="id")
+	private String idCat;
 	private String name;
 	private String description;
 	
-	@ManyToMany
-	List<Medicine> listMedicine;
+	@OneToMany(mappedBy="category", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Medicine> listMedicine;
 	
 	public Category() {
 		
 	}
 	
-	public Category(int id, String name, String description) {
+	public Category(String id, String name, String description) {
 		super();
-		this.id = id;
+		this.idCat = id;
 		this.name = name;
 		this.description = description;
 	}
 
 
 
-	protected int getId() {
-		return id;
+	protected String getId() {
+		return idCat;
 	}
 
 
 
-	protected void setId(int id) {
-		this.id = id;
+	protected void setId(String id) {
+		this.idCat = id;
 	}
 
 
@@ -60,6 +64,14 @@ public class Category {
 
 	protected void setDescription(String description) {
 		this.description = description;
+	}
+
+	protected List<Medicine> getListMedicine() {
+		return listMedicine;
+	}
+
+	protected void setListMedicine(List<Medicine> listMedicine) {
+		this.listMedicine = listMedicine;
 	}
 	
 	
