@@ -3,9 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysqlDawes:3306
--- Tiempo de generación: 07-11-2022 a las 12:21:54
+-- Tiempo de generación: 08-11-2022 a las 08:49:43
 -- Versión del servidor: 5.7.22
 -- Versión de PHP: 8.0.19
+
+CREATE DATABASE MedicamentosJvh;
+USE MedicamentosJvh;
+
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,116 +33,120 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Category` (
-  `id` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) CHARACTER SET utf8 NOT NULL,
-  `description` varchar(150) CHARACTER SET utf8 NOT NULL
+  `description` varchar(150) CHARACTER SET utf8 NOT NULL,
+    
+    CONSTRAINT pk_c PRIMARY KEY (id)
+    
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 --
 -- Volcado de datos para la tabla `Category`
 --
 
 INSERT INTO `Category` (`id`, `name`, `description`) VALUES
-('111-91-9516', 'EGF UV SHIELD', 'Elbow enthesopathy NEC'),
-('120-98-0857', 'Equaline Cough DM', 'NB feeding problems'),
-('127-12-4600', 'Diovan', 'Malfunc oth device/graft'),
-('141-36-2851', 'Medi Stem Collagen Toner', 'C5-c7 fx-op/cen cord syn'),
-('146-22-1354', 'Sodium Bicarbonate', 'Fracture two ribs-open'),
-('147-48-4989', 'Levofloxacin', 'Mal neo hepatic flexure'),
-('157-42-6683', 'Antibacterial Foam Hand Wash', 'Opn subdur hem-coma NOS'),
-('164-84-2043', 'Multaq', 'Dis of biliary tract NOS'),
-('165-05-3957', 'Sulfamethoxazole and Trimethoprim', 'Adult sexual abuse'),
-('167-26-5999', 'fluticasone propionate', 'Rat bite'),
-('179-77-2570', 'Clindamycin hydrochloride', 'Parox tachycardia NOS'),
-('180-40-7346', 'Bupropion Hydrochloride', 'Hodgkins granulom abdom'),
-('184-48-3929', 'Family Wellness Antifungal', 'Lactat dis NOS-antepart'),
-('187-44-5782', 'Atenolol and Chlorthalidone', 'Malocc-Angles class II'),
-('190-58-7645', 'Saline Laxative', 'Cystitis NOS'),
-('203-83-0282', 'Cold Relief', 'Instrmnt fail in surgery'),
-('205-78-8658', 'CELEXA', 'TB of bladder-unspec'),
-('226-95-5925', 'Humco Hydrogen Peroxide', 'Rhinoscleroma'),
-('249-36-7994', 'Amoxicillin', 'Inf arthritis NOS-mult'),
-('284-36-4948', 'Methocarbamol', 'Lipidoses'),
-('284-93-9652', 'Equisetum Viscum', 'Thyroid dysfunc-antepart'),
-('286-39-9370', 'CLEANpHIRST Alcohol Free Antiseptic Hand Sanitizer', 'Wheezing'),
-('299-29-4255', 'Oxy Daily Defense Exfoliating Face Scrub', 'Reduc deform up limb NOS'),
-('301-94-8430', 'Diltiazem Hydrochloride', 'Compl reattached finger'),
-('302-21-6255', 'CLONIDINE HYDROCHLORIDE', 'Laryngotrach anomaly NEC'),
-('304-18-9945', 'PureLife Topical Anesthetic', 'Lym dplt unsp xtrndl org'),
-('311-76-9814', 'Coppertone Wet n Clear', 'Post-op foreign body NOS'),
-('312-83-0016', 'Lettuce', 'Cellulitis, site NEC'),
-('318-57-1622', 'Muscle rub', 'Open wound gum-compl'),
-('319-40-8413', 'Best Choice Bisacodyl Laxative', 'Prim angl-clos glauc NOS'),
-('333-02-4312', 'LANOXIN', 'Bact food poisoning NEC'),
-('339-22-9904', 'Standardized Perennial Rye Grass', 'W/craft fall NEC-power'),
-('352-38-8305', 'Renvela', 'Prim TB complex-no exam'),
-('354-19-4934', 'Candida albicans', 'Chr erythrm w remision'),
-('369-21-3408', 'Sulfamethoxazole and Trimethoprim', 'Prs ara wo inf w ntr/st'),
-('374-21-8968', 'Anti-Aging Foundation SPF 15 Shade 100', 'Fet growth ret 2500+g'),
-('384-33-7638', 'Prazosin Hydrochloride', 'Effects electric current'),
-('393-28-8838', 'Olay Fresh Effects BB', 'Glaucoma w iris anomaly'),
-('395-32-7214', 'Anchor Foaming Hand Sanitizer', 'Nontrauma hema soft tiss'),
-('402-47-4581', 'OXYMORPHONE HYDROCHLORIDE', 'Fx up radius NEC/NOS-cl'),
-('410-81-0419', 'Clopidogrel bisulfate', 'Erythema multiforme maj'),
-('420-72-9068', 'PANTOPRAZOLE SODIUM', 'Cl skull fx NEC-coma NOS'),
-('425-39-4578', 'Haloperidol', 'Cornea degeneration NEC'),
-('429-98-3812', 'FACTIVE', 'Adv eff antimalarials'),
-('437-42-4354', 'Puritan Hand Sanitizer', 'Retinoph prematr,stage 2'),
-('453-63-7230', 'Hawaiian Tropic Island Sport SPF 30', 'School recess,camp'),
-('469-79-4903', 'Terocin', 'Mild/NOS preeclamp-unsp'),
-('475-34-5685', 'RosaRex', 'Mix dis conduct/emotion'),
-('479-44-0750', 'Lamotrigine', 'Cesarean deliv NOS-unsp'),
-('482-68-4124', 'Anger', 'Bone & cartilage dis NOS'),
-('485-14-1628', 'Bryophyllum Conchae', 'Trauma compart synd NEC'),
-('491-66-3961', 'Acyclovir', 'Screen for gu cond NEC'),
-('495-80-3346', 'Promethazine Hydrochloride', 'Fall NOS'),
-('505-26-4077', 'Fentanyl Citrate', 'Ant subcaps pol cataract'),
-('515-77-4618', 'Quinapril', 'Bone cyst NEC'),
-('517-70-8030', 'Macrodantin', 'Chorioretinitis NOS'),
-('520-19-4680', 'Benazepril Hydrochloride', 'Smell and taste problem'),
-('527-37-3079', 'Dilantin', 'Drug depend preg-unspec'),
-('530-23-2457', 'Additox', '1st deg burn abdomn wall'),
-('558-02-5110', 'Citroma Magnesium Citrate', 'Foreign bdy ext eye NEC'),
-('560-54-0366', 'Eszopiclone', 'Assault-gasoline bomb'),
-('579-78-1884', 'THINKSPORT', '3rd deg burn ankle'),
-('580-76-9973', 'Triamterene and Hydrochlorothiazide', 'Fem genital mutilate NEC'),
-('584-22-0367', 'Western (Sierra) Juniper', 'Leptospirosis NOS'),
-('584-41-6980', 'Cephalexin', 'Intravag tors sperm cord'),
-('594-38-0082', 'Neosporin Original', 'Diseases of lips'),
-('605-24-2777', 'Publix Burn Relief', 'Anaerobic meningitis'),
-('616-17-0288', 'GOODSENSE IRRITATION RELIEF EYE DROPS', 'Deep 3 deg brn head-mult'),
-('616-83-1001', 'Childrens Growth and Development', 'Poison-gas/vapor NEC'),
-('623-24-5064', 'Purell Advanced Hand Sanitizer Refreshing Florals', 'Ca in situ resp sys NOS'),
-('624-08-3126', 'Childrens Colic RELIEF', 'CHF NOS'),
-('638-49-5025', 'Wart Control', 'Kidney laceration-closed'),
-('642-18-6963', 'Multi-Symptom Allergy', 'Lymphosarcoma thorax'),
-('651-39-8369', 'Testosterone Cypionate', 'Fx dorsal vertebra-open'),
-('652-64-2732', 'Hourglass Illusion Tinted Moisturizer Ivory', 'RR acc w explos-pedest'),
-('663-58-3801', 'Levothyroxine Sodium', 'Urethral fistula'),
-('683-29-2121', 'HAWAIIAN Tropic', 'Cl skl base fx-prol coma'),
-('704-55-1282', 'Diclofenac Sodium', '30-39% bdy brn/3 deg NOS'),
-('708-67-5316', 'Minocycline Hydrochloride', 'Cognition sign/sympt NEC'),
-('716-98-4606', 'Acetaminophen', 'Kaschin-beck dis-unspec'),
-('725-03-9381', 'Lice MD', 'Fm hx prostate malig'),
-('727-79-9286', 'Berry Scented Hand Sanitizer', 'Mal neo lip, inner NOS'),
-('728-37-3143', 'Oxymorphone hydrochloride', 'Pinta NOS'),
-('750-78-2704', 'Fetzima', 'Ridden anim acc-pers NEC'),
-('751-64-4421', 'Asmanex', 'Ocular penetration NOS'),
-('756-16-4489', 'Dr. Jart Bounce Beauty Balm 02 Medium-Deep', 'Fall from ladder'),
-('773-28-7509', 'Claravis', 'Glucocorticoid deficient'),
-('788-45-8455', 'Amoxicillin', 'Lt-for-dates 1000-1249g'),
-('797-32-0073', 'Climate Adaptation Hot and Humid', 'Scorpion sting'),
-('803-51-2538', 'No7 Stay Perfect Foundation Sunscreen SPF 15', 'Drug allergy NEC'),
-('805-04-8814', 'Naproxen Sodium', 'Abn histologic find NEC'),
-('819-65-6984', 'Panama Jack', 'TB of bronchus-unspec'),
-('828-21-7499', 'Lycoris rubus whitening', 'Accid-caustic substance'),
-('830-04-0501', 'Oxygen', 'Fetal mal 1500-1749g'),
-('847-59-2850', 'Daytime Cold Flu Relief', 'Mal neo carotid body'),
-('851-04-6606', 'Smart Sense Acid Reducer', 'Av block-2nd degree NEC'),
-('862-43-7456', 'Sei Bella Age-Defying Liquid Foundation', 'Psychogen endocrine dis'),
-('877-89-2940', 'EQUALINE', 'Uns mono leuk w rmsion'),
-('884-69-8623', 'East Sycamore', 'Mountain,rock/wall climb'),
-('896-89-9013', 'Ultra-TechneKow', 'Mat anesth/analg aff NB');
+(1, 'Qdryl Allergy', 'id consequat in'),
+(2, 'AZITHROMYCIN', 'etiam pretium'),
+(3, 'DAILY MOISTURIZING', 'duis ac'),
+(4, 'Zhenweilong Huoluo You', 'suscipit a feugiat'),
+(5, 'Treatment Set TS351315', 'erat quisque erat'),
+(6, 'Secret Clinical Strength Advanced', 'porta'),
+(7, 'Enoxaparin Sodium', 'posuere cubilia'),
+(8, 'Colgate', 'ultrices enim lorem'),
+(9, 'Fluoxetine', 'amet sapien dignissim'),
+(10, 'Ibuprofen', 'etiam'),
+(11, 'Adult Low Dose Aspirin', 'convallis tortor'),
+(12, 'Chloraseptic Sore Throat Max Liquid Center', 'lacinia erat vestibulum'),
+(13, 'Methocarbamol', 'vestibulum eget'),
+(14, 'DR. RECKEWEG R26 Remisin', 'sem'),
+(15, 'Bacto Plus', 'habitasse platea dictumst'),
+(16, 'Cilostazol', 'eget tempus'),
+(17, 'Leader Adult Tussin', 'ut nulla'),
+(18, 'ESIKA Extreme Moisturizing SPF 16', 'porta volutpat'),
+(19, 'COMETRIQ', 'vestibulum'),
+(20, 'Valium', 'ipsum primis in'),
+(21, 'Coppertone Sport AccuSpray', 'platea dictumst etiam'),
+(22, 'LYM D', 'pede malesuada'),
+(23, 'tizanidine hydrochloride', 'venenatis turpis enim'),
+(24, 'Ceftriaxone', 'sit amet cursus'),
+(25, 'Care One Cold Multi Symptom', 'habitasse'),
+(26, 'Warfarin Sodium', 'in'),
+(27, 'UltrasolSunscreen', 'commodo vulputate justo'),
+(28, 'Good Neighbor Pharmacy Cold', 'nisl nunc'),
+(29, 'CELEBREX', 'nec'),
+(30, 'GPS Topical Anesthetic', 'rhoncus mauris enim'),
+(31, 'Hydrocodone Bitartrate and Acetaminophen', 'ante ipsum'),
+(32, 'Royal Antibacterial Raspberry Hand Cleanse', 'feugiat non pretium'),
+(33, 'rexall ibuprofen', 'cras non'),
+(34, 'Circulatone', 'eleifend pede'),
+(35, 'Paroxetine', 'augue luctus tincidunt'),
+(36, 'H-E-B Dead Sea Organics Protect and Perfect Day Broad Spectrum SPF15', 'nisi volutpat'),
+(37, 'CRYSTAL MIRACLE MULTI', 'vestibulum'),
+(38, 'Protriptyline Hydrochloride', 'justo in'),
+(39, 'Microban', 'tortor risus'),
+(40, 'SHISEIDO RADIANT LIFTING FOUNDATION', 'praesent blandit'),
+(41, 'Amlodipine and Valsartan', 'sapien'),
+(42, 'aspirin free', 'morbi odio'),
+(43, 'Air', 'vivamus vestibulum'),
+(44, 'Urecholine', 'vulputate elementum'),
+(45, 'Hard Candy Correction Creme', 'et eros vestibulum'),
+(46, 'Body Luxuries French Lavender Waterless Anti-bacterial Hand Sanitizer', 'orci pede'),
+(47, 'Ionite APF', 'erat'),
+(48, 'Ibuprofen', 'nullam molestie nibh'),
+(49, 'Venlafaxine Hydrochloride', 'odio'),
+(50, 'Triamcinolone Acetonide', 'duis mattis'),
+(51, 'Sucralfate', 'duis at'),
+(52, 'Pecan Pollen', 'suspendisse potenti cras'),
+(53, 'Day Time Cold/Flu Relief', 'sed justo'),
+(54, 'LBEL HYDRATESS', 'dapibus'),
+(55, 'Super Restorative Foundation True Lift SPF 15 Tint 06', 'in consequat ut'),
+(56, 'PredniSONE', 'sit amet cursus'),
+(57, 'Cymbalta', 'in'),
+(58, 'ELIGARD', 'velit'),
+(59, 'Thyrostat', 'quis libero'),
+(60, 'Tretinoin', 'adipiscing lorem vitae'),
+(61, 'cefazolin', 'viverra diam'),
+(62, 'Acetazolamide', 'nec condimentum'),
+(63, 'CardinalHealth alcohol prep pads LARGE', 'non velit'),
+(64, 'Klor-Con', 'sed nisl nunc'),
+(65, 'Cetirizine Hydrochloride', 'neque aenean auctor'),
+(66, 'Xenon', 'consequat metus'),
+(67, 'NU-DERM SUNFADER', 'vulputate vitae'),
+(68, 'Aztreonam', 'rutrum'),
+(69, 'Childrens Pain and Fever', 'cras in'),
+(70, 'hydrocodone bitartrate and acetaminophen', 'nisi volutpat eleifend'),
+(71, 'Topiramate', 'ut ultrices vel'),
+(72, 'Daily Moisturizer Broad-Spectrum SPF 30', 'turpis'),
+(73, 'Nitrogen', 'morbi sem mauris'),
+(74, 'TopCare Ibuprofen', 'nulla ac'),
+(75, 'Nivea For Men Sensitive', 'donec'),
+(76, 'Estrogen', 'pellentesque at'),
+(77, 'Cellular Laboratories De-Aging Sunscreen Broad Spectrum SPF 50 Plus', 'aliquet maecenas leo'),
+(78, 'Upset Stomach, Constipation', 'vehicula consequat'),
+(79, 'Synthroid', 'dui'),
+(80, 'PredniSONE', 'quis orci'),
+(81, 'Italian Rye Grass', 'quis lectus suspendisse'),
+(82, 'Mycophenolate Mofetil', 'morbi a ipsum'),
+(83, 'Gelsemium Sempervirens 30c', 'sodales'),
+(84, 'ZOLINZA', 'suspendisse'),
+(85, 'Sunscreen Creme SPF 37', 'purus sit amet'),
+(86, 'FLUTICASONE PROPIONATE', 'aliquet pulvinar'),
+(87, 'Cuprum 17 Special Order', 'rutrum nulla'),
+(88, 'VIREX', 'in congue'),
+(89, 'Mitomycin', 'placerat'),
+(90, 'Bonogen Plus', 'consequat'),
+(91, 'Haloperidol', 'amet'),
+(92, 'Citalopram', 'molestie hendrerit'),
+(93, 'Maximum Strength Laxative', 'ultrices vel augue'),
+(94, 'Alfuzosin hydrochloride', 'tempor convallis nulla'),
+(95, 'TCX Skincare', 'proin'),
+(96, 'Lamotrigine', 'et eros vestibulum'),
+(97, 'Duloxetine', 'eu'),
+(98, 'Aspirin', 'dignissim vestibulum vestibulum'),
+(99, 'ck one all day perfection face makeup', 'nulla dapibus'),
+(100, 'Ondansetron Hydrochloride', 'praesent id');
 
 -- --------------------------------------------------------
 
@@ -146,246 +155,124 @@ INSERT INTO `Category` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE `Medicine` (
-  `id` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `description` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `description` varchar(150) CHARACTER SET utf8 NOT NULL,
   `price` double NOT NULL,
-  `category` varchar(50) CHARACTER SET utf8 NOT NULL
+  `Category` int(11) NOT NULL,
+    
+   CONSTRAINT pk_m PRIMARY KEY (id),
+    CONSTRAINT fk_c FOREIGN KEY (Category) REFERENCES Category(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
 --
 -- Volcado de datos para la tabla `Medicine`
 --
 
-INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `category`) VALUES
-('104-30-7425', 'OXAZEPAM', 'Contusion of unsp ring finger w damage to nail, subs encntr', 31.44, '402-47-4581'),
-('104-40-1268', 'losartan potassium', 'Pedal cycle rider injured pick-up truck, pk-up/van', 96.1, '180-40-7346'),
-('124-01-1880', 'CEFUROXIME AXETIL', 'Oth fracture of left femur, subs for clos fx w nonunion', 25.97, '485-14-1628'),
-('124-82-8998', 'Oxygen', 'Laceration w fb of pharynx and cervical esophagus, init', 94.76, '286-39-9370'),
-('124-86-6893', 'Hydrogen Peroxide', 'Complete traumatic amputation at level between hip and knee', 52.64, '249-36-7994'),
-('126-65-8522', 'Diphenhydramine HCl', 'Sprain of left acromioclavicular joint, subsequent encounter', 74.96, '333-02-4312'),
-('128-70-1751', 'AVOBENZONE, OCTOCRYLENE, OXYBENZONE', 'Unspecified open wound of right breast, subsequent encounter', 44.92, '374-21-8968'),
-('129-28-9242', 'famotidine, calcium carbonate and magnesium hydroxide', 'Disp fx of lateral epicondyle of l humerus, init for opn fx', 13.07, '624-08-3126'),
-('129-89-9094', 'Warfarin Sodium', 'Unsp fracture of shaft of unsp radius, init for clos fx', 79.43, '164-84-2043'),
-('139-29-4470', 'Midazolam hydrochloride', 'Fracture of base of skull, unspecified side, 7thB', 82.39, '584-22-0367'),
-('145-14-4178', 'Citalopram Hydrobromide', 'Lordosis, unspecified, lumbar region', 60.93, '146-22-1354'),
-('158-06-1617', 'CHLORPHENIRAMINE MALEATE', 'Adverse effect of sulfonamides, initial encounter', 90.95, '505-26-4077'),
-('184-67-2074', 'Acetaminophen', 'Acute hematogenous osteomyelitis, unspecified shoulder', 45.86, '560-54-0366'),
-('189-44-2679', 'meloxicam', 'Unspecified transplanted organ and tissue infection', 71.62, '482-68-4124'),
-('191-08-2126', 'WITCH HAZEL', 'Low vision, both eyes', 51.59, '616-17-0288'),
-('196-90-6131', 'Octinoxate and Oxybenzone', 'Toxic effect of unspecified substance, assault, init encntr', 15.46, '819-65-6984'),
-('209-53-7067', 'amitriptyline hydrochloride', 'Nondisp fx of distal phalanx of left great toe, sequela', 65.6, '520-19-4680'),
-('212-94-7959', 'entecavir', 'Nondisp seg fx shaft of l femr, 7thE', 34.99, '803-51-2538'),
-('216-44-0923', 'Julep Solace Oil-Free Sunscreen Broad Spectrum', 'Corrosion of unspecified degree of hand, unspecified site', 94.39, '623-24-5064'),
-('224-33-9090', 'Hydralazine Hydrochloride', 'Pauciarticular juvenile rheumatoid arthritis, knee', 74.2, '339-22-9904'),
-('225-49-1668', 'Alcohol', 'Resorption atelectasis without respiratory distress syndrome', 11.37, '605-24-2777'),
-('230-60-9879', 'Lansoprazole', 'Oth disp fx of base of first MC bone, right hand, sequela', 29.21, '515-77-4618'),
-('239-87-9886', 'carboplatin', 'Person injured in unsp nonmotor-vehicle accident, nontraffic', 81.89, '683-29-2121'),
-('248-59-5995', 'Hydrochlorothiazide', 'Burn of first deg mult sites of shldr/up lmb, except wrs/hnd', 93.48, '384-33-7638'),
-('253-24-1385', 'ARNICA MONTANA', 'FERRUM PHOSPHORICUM', 63.07, '120-98-0857'),
-('255-69-5370', 'Pyrithione Zinc', 'Nontraumatic ischemic infarction of muscle, unsp lower leg', 83.74, '453-63-7230'),
-('284-97-8231', 'Natrum Muriaticum, Ranunculus Bulbosus', 'Animal-rider injured in collision w mtr veh, init encntr', 43.57, '157-42-6683'),
-('300-70-9522', 'OCTINOXATE, OCTISALATE, TITANIUM DIOXIDE', 'Maternal care for oth isoimmun, first trimester, fetus 1', 58.9, '579-78-1884'),
-('304-58-5554', 'Octinoxate and Oxybenzone', 'Other specified persistent mood disorders', 79.15, '708-67-5316'),
-('310-82-1088', 'lamivudine and zidovudine', 'Fx condylar process of mandible, unspecified side, 7thB', 77.01, '429-98-3812'),
-('317-93-7868', 'methylprednisolone acetate', 'Injury of trigeminal nerve, unspecified side, init encntr', 75.9, '141-36-2851'),
-('325-87-0358', 'Famotidine, Calcium Carbonate, Magnesium Hydroxide', 'Other specified bursopathies, multiple sites', 19.82, '728-37-3143'),
-('335-85-0652', 'Topiramate', 'Unsp traum displ spondylolysis of 5th cervcal vert, 7thD', 92.78, '184-48-3929'),
-('342-82-4607', 'calcitonin salmon', 'Gout due to renal impairment, unspecified wrist', 14.82, '425-39-4578'),
-('350-12-5953', 'Triclosan', 'Nondisp fx of greater trochanter of l femr, 7thQ', 45.83, '304-18-9945'),
-('358-78-5966', 'naltrexone', 'Malformation of placenta, unspecified, second trimester', 92.38, '638-49-5025'),
-('363-06-2343', 'Arnica montana', 'Avena sativa, ', 88.36, '663-58-3801'),
-('363-31-2987', 'Diltiazem Hydrochloride', 'Other infective (teno)synovitis, unspecified hip', 31.84, '716-98-4606'),
-('376-17-3203', 'Ranitidine', 'Breakdown of vascular dialysis catheter, sequela', 23.14, '205-78-8658'),
-('402-33-1674', 'HYDROCODONE BITARTRATE, ACETAMINOPHEN', 'External constriction of unspecified upper arm, subs encntr', 97.81, '847-59-2850'),
-('418-03-1324', 'Avena sativa', 'Staphyloma', 96.4, '616-83-1001'),
-('419-57-0196', 'Octinoxate and Titanium Dioxide', 'Maternal care for damage to fetus from alcohol, fetus 2', 94.58, '877-89-2940'),
-('421-32-2345', 'Lidocaine Hydrochloride and Epinephrine', 'Pneumococcal arthritis, unspecified hand', 22.21, '187-44-5782'),
-('425-02-3345', 'Diphenhydramine HCl, Phenylephrine HCl', 'Other injury of unspecified kidney, sequela', 90.44, '750-78-2704'),
-('425-24-1737', 'Isosorbide mononitrate', 'Congenital cirrhosis (of liver)', 53.6, '580-76-9973'),
-('446-65-3907', 'benzocaine and benzethonium chloride', 'Zygomatic fracture, left side, 7thG', 84.35, '179-77-2570'),
-('455-62-8194', 'Acetaminophen', 'Dextromethorphan', 41.7, '369-21-3408'),
-('457-29-2452', 'mesalamine', 'Inappropriate temperature in local application and packing', 76.92, '395-32-7214'),
-('482-44-1584', 'carbidopa, levodopa and entacapone', 'Nondisp fx of ', 73.25, '469-79-4903'),
-('482-64-2006', 'Naproxen Sodium', 'Non-pressure chronic ulcer of other part of lower leg', 78.08, '284-93-9652'),
-('506-43-2257', 'Hydrochlorothiazide', 'Congenital glaucoma', 42.64, '651-39-8369'),
-('513-87-8360', 'dimethicone', 'Failed trial of labor, unspecified', 15.32, '420-72-9068'),
-('514-18-5333', 'Octinoxate and Oxybenzone', 'Burn of unspecified degree of unspecified thigh', 13.85, '558-02-5110'),
-('525-64-7796', 'Giant, Short, Western Ragweed Mix', 'Nondisp fx of neck of second MC bone, left hand, sequela', 53.63, '410-81-0419'),
-('536-84-6441', 'DOG EPITHELIA', 'Cystoid macular edema following cataract surgery, bilateral', 59.4, '495-80-3346'),
-('539-17-7702', 'sulindac', 'Unspecified foreign body in pharynx causing other injury', 91.91, '479-44-0750'),
-('545-45-2260', 'Oxygen', 'Other disorders of choroid', 10.37, '704-55-1282'),
-('570-09-4650', 'VERATRUM ALBUM ROOT', 'Contusion of wrist and hand', 81.82, '517-70-8030'),
-('570-32-3355', 'Ciprofloxacin', 'Measles keratitis and keratoconjunctivitis', 76.91, '147-48-4989'),
-('578-94-1189', 'Lorazepam', 'Malignant neoplasm of head, face and neck', 60.38, '527-37-3079'),
-('590-56-1864', 'Methimazole', 'Overexertion from repetitive movements', 28.44, '851-04-6606'),
-('591-65-7320', 'Escitalopram', 'Pnctr w foreign body of unsp cheek and TMJ area, init', 62.34, '312-83-0016'),
-('603-52-4917', 'Darkleaves Mugwort', 'Corrosions of left ear drum, initial encounter', 73.89, '111-91-9516'),
-('606-58-0214', 'BORIC ACID', 'Unsp open wound of right middle finger with damage to nail', 51.44, '165-05-3957'),
-('611-31-6148', 'Aconitum napellus, Arsenicum album', 'Belladonna', 91.58, '896-89-9013'),
-('611-51-1416', 'THYROID', 'Exposure to tanning bed, subsequent encounter', 56.42, '773-28-7509'),
-('629-89-8848', 'Sodium Fluoride', 'Toxic eff of corrosv acids and acid-like substnc, acc, subs', 12.95, '354-19-4934'),
-('635-61-4058', 'Prednisone', 'Dysthymic disorder', 45.48, '828-21-7499'),
-('643-62-7797', 'metoprolol tartrate', 'Toxic eff of nitrodrv/aminodrv of benzn/homolog, asslt, subs', 67.37, '393-28-8838'),
-('649-15-3879', 'Avobenzone Homosalate Octisalate Octocrylene Oxybenzone', 'Encntr for exam for nrml cmprsn and ctrl in clncl rsrch prog', 42.7, '203-83-0282'),
-('657-71-6000', 'Glycerin', 'Sltr-haris Type I physl fx low end ulna, r arm, 7thK', 47.74, '751-64-4421'),
-('664-91-0947', 'Meloxicam', 'Congenital malform', 98.86, '725-03-9381'),
-('671-93-0050', 'Famotidine', 'Other calcification of muscle, upper arm', 63.15, '594-38-0082'),
-('683-06-7768', 'Benzocaine and Menthol', 'Sltr-haris Type III physl fx low end l tibia, 7thP', 27.13, '167-26-5999'),
-('700-33-0506', 'Hydralazine Hydrochloride', 'Oblique fracture of shaft of humerus', 52.44, '642-18-6963'),
-('701-20-7190', 'Magnesium hydroxide', 'Generalized atherosclerosis', 93.41, '884-69-8623'),
-('718-38-4668', 'Clobetasol Propionate', 'Minor laceration of right pulmonary blood vessels, sequela', 80.05, '299-29-4255'),
-('733-03-8144', 'ALCOHOL', 'Migraine without aura, intractable', 34.68, '788-45-8455'),
-('749-21-4474', 'Ibuprofen', 'Laceration with foreign body, left ankle', 23.03, '127-12-4600'),
-('753-31-0295', 'Walnut Black Pollen', 'Other rupture of muscle (nontraumatic), right thigh', 52.94, '318-57-1622'),
-('754-52-3385', 'Naproxen Sodium', 'Corrosion of 3rd deg mu sites of unsp ankle and foot, init', 43.49, '862-43-7456'),
-('757-55-0088', 'NITROGEN', 'Abscess of lung and mediastinum', 17.83, '301-94-8430'),
-('758-70-3997', 'Bismuth subsalicylate', 'Disp fx of med condyle of unsp humer, 7thG', 51.6, '584-41-6980'),
-('761-58-2391', 'TRICLOSAN', 'Mtrcy passenger injured in clsn w pedl cyc in traf, init', 77.71, '830-04-0501'),
-('765-08-0461', 'SERTRALINE HYDROCHLORIDE', 'Corrosion of third degree of unspecified axilla, sequela', 46.79, '530-23-2457'),
-('780-33-2906', 'Simvastatin', 'Underdosing of chloramphenicol group, initial encounter', 35.58, '311-76-9814'),
-('792-42-5523', 'thiothixene', 'Toxic effect of venom of spider, accidental (unintentional)', 19.57, '437-42-4354'),
-('798-47-2292', 'Nandrolone Decanoate', 'Puncture wound without foreign body, left thigh', 34.39, '190-58-7645'),
-('802-55-7255', 'Paroxetine Hydrochloride', 'Erysipeloid, unspecified', 31.06, '226-95-5925'),
-('806-14-9832', 'Carvedilol', 'Path fx in oth disease, l hand, subs for fx w routn heal', 54.97, '491-66-3961'),
-('823-01-0056', 'Magnesium hydroxide', 'Dislocation of jaw, left side, subsequent encounter', 68.06, '652-64-2732'),
-('823-17-6434', 'Aluminum Sesquichlorohydrate', 'Primary blast injury of colon', 94.2, '284-36-4948'),
-('830-96-4692', 'Amoxicillin', 'Burn of first degree of left palm, sequela', 22.8, '475-34-5685'),
-('862-13-3551', 'TITANIUM DIOXIDE, OCTINOXATE, ZINC OXIDE', 'Derang of medial meniscus due to old tear/inj, left knee', 54.14, '352-38-8305'),
-('863-27-0860', 'LIDOCAINE', 'Nondisp bicondylar fx r tibia, 7thJ', 76.39, '727-79-9286'),
-('867-51-9846', 'Nitrogen', 'Contusion of fallopian tube, unilateral, initial encounter', 10.79, '319-40-8413'),
-('867-61-1801', 'Hydroquinone', 'Puncture wound without foreign body of unsp part of thorax', 72.68, '302-21-6255'),
-('870-73-3951', 'Diphenhydramine HCl', 'Neoplasm of uncrt behavior of lip, oral cavity and pharynx', 38.83, '756-16-4489'),
-('874-27-0954', 'Aluminum Chlorohydrate', 'Sltr-haris Type I physl fx upr end rad, l arm, 7thD', 30.63, '797-32-0073'),
-('897-63-3072', 'ivacaftor', 'Salter-Harris Type II physeal fracture of metatarsal', 82.12, '805-04-8814');
+INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
+(1, 'Duloxetine', 'Extravasation of vesicant antineoplastic chemotherapy, subs', 72.4, 1),
+(2, 'Calcium Polycarbophil', 'Blister (nonthermal), right lower leg, sequela', 70.37, 2),
+(3, 'ZINC OXIDE', 'Central serous chorioretinopathy, unspecified eye', 40.7, 3),
+(4, 'Sodium Fluoride', 'Oth disp fx of base of 1st MC bone, unsp hand, 7thK', 90.03, 4),
+(5, 'DIETHYLPROPION HYDROCHLORIDE', 'Laceration of right quadriceps muscle, fascia and tendon', 57.21, 5),
+(6, 'metoprolol succinate', 'Rupture in Descemets membrane', 88.69, 6),
+(7, 'Tramadol Hydrochloride and Acetaminophen', 'Subluxation of midcarpal joint of left wrist, init encntr', 33.21, 7),
+(8, 'Carbidopa and Levodopa', 'Poisoning by cardi-stim glycos/drug simlar act, self-harm', 64.08, 8),
+(9, 'Meclizine', 'Poisoning by diagnostic agents, accidental, init', 54.22, 9),
+(10, 'Hydralazine Hydrochloride', 'Nondisp comminuted fx shaft of humerus, unsp arm, sequela', 84.42, 10),
+(11, 'Wormwook', 'Displ suprcndl fx w intrcndl extn low end unsp femr, 7thN', 91.88, 11),
+(12, 'arnica montana, bellis perennis', 'Unsp physeal fx lower end of l tibia, subs for fx w nonunion', 88.8, 12),
+(13, 'Aesculos 30c, Antimonium Tart 30c, Arsenicum 30c', 'init', 35.34, 13),
+(14, 'LIDOCAINE HYDROCHLORIDE', 'Nondisp intartic fx r calcaneus, subs for fx w routn heal', 55.13, 14),
+(15, 'Dapsone', 'Antipruritics', 90.06, 15),
+(16, 'RANITIDINE HYDROCHLORIDE', 'Nondisp transverse fx shaft of r ulna, 7thP', 82.04, 16),
+(17, 'Felodipine', 'Thyrotoxicosis, unspecified with thyrotoxic crisis or storm', 78.71, 17),
+(18, 'clonazepam', 'Pnctr w/o fb of low back and pelv w penet retroperiton, sqla', 76.82, 18),
+(19, 'TESTOSTERONE', 'Quadruplets, some liveborn', 95.33, 19),
+(20, 'cefazolin sodium', 'Autoinflammatory syndrome, unspecified', 24.2, 20),
+(21, 'Phenylephrine HCl', 'Unsp fracture of shaft of right tibia, init for clos fx', 75.87, 21),
+(22, 'Piperacillin and Tazobactam', 'Oth fracture of left pubis, subs for fx w delay heal', 80.53, 22),
+(23, 'House Fly', 'Occup of snowmobile injured in nontraffic accident, sequela', 25.85, 23),
+(24, 'Ramipril', 'Anterior subluxation of right ulnohumeral joint, subs encntr', 29.36, 24),
+(25, 'Ondansetron', 'Inj to rider of nonrecr wtrcrft puld beh oth wtrcrft, init', 48.1, 25),
+(26, 'Oxygen', 'Underdosing of anthelminthics, subsequent encounter', 66.42, 26),
+(27, 'Avobenzone, Homosalate, Octisalate, Octocrylene, and Oxybenzone', 'Unsp nondisp fx of 2nd cervcal vert, 7thG', 29.14, 27),
+(28, 'Tacrolimus', 'Disp fx of distal phalanx of thmb, subs for fx w delay heal', 38.34, 28),
+(29, 'Gabapentin', 'Onchocerciasis with endophthalmitis', 73.14, 29),
+(30, 'Carvedilol', 'Nondisp osteochon fx l patella, 7thE', 42.95, 30),
+(31, 'Antimon. crud., Arsenicum alb., Berber. vulg', 'Wedge comprsn fx third lelay heal', 79.27, 31),
+(32, 'GENTAMICIN SULFATE', 'Enophthalmos due to atrophy of orbital tissue, unsp eye', 90.3, 32),
+(33, 'temazepam', 'Infectious mononucleosis, unspecified with meningitis', 95.96, 33),
+(34, 'Sodium Chloride', 'Minor laceration of left pulmonary blood vessels', 50.89, 34),
+(35, 'HYPERICUM PERFORATUM', 'Folate deficiency anemia', 71.81, 35),
+(36, 'Donepezil Hydrochloride', 'Corrosion of first degree of right forearm, sequela', 40.86, 36),
+(37, 'OCTINOXATE, OXYBENZONE', 'Nondisplaced apophyseal fracture of right femur, init', 48.1, 37),
+(38, 'SODIUM CHLORIDE', 'Carbuncle of left upper limb', 53.85, 38),
+(39, 'Octinoxate and Titanium Dioxide', 'Other subluxation of left ulnohumeral joint', 71.2, 39),
+(40, 'Warfarin Sodium', 'Person outside bus injured in nonclsn trnsp accident nontraf', 58.53, 40),
+(41, 'Clonazepam', 'Unsp physeal fx lower end of l tibia, subs for fx w malunion', 84.93, 41),
+(42, 'Lycopodium clavatum, ', 'Unsp inj intrinsic musc/fasc/tend finger at wrs/hnd lv, subs', 37.38, 42),
+(43, 'Oxybenzone, Octinoxate, Octisalate, Homosalate, and Avobenzone', 'Contusion of eyelid and periocular area', 25.65, 43),
+(44, 'Pioglitazone', 'Arthritis due to Lyme disease', 17.23, 44),
+(45, 'ADENOSINE', 'Oth postproc endocrine and metabolic comp and disorders', 99.36, 45),
+(46, 'Cytarabine', 'Displ suprcndl fx w/o intrcndl extn low end r femr, 7thD', 33.11, 46),
+(47, 'gemfibrozil', 'Complete lesion at C8 level of cervical spinal cord, subs', 36.69, 47),
+(48, 'Alcohol', 'Absence and agenesis of lacrimal apparatus', 43.97, 48),
+(49, 'olea europaea pollen', 'Retained (old) magnetic fb in post wall of globe, unsp eye', 11.78, 49),
+(50, 'Fexofenadine Hydrochloride', 'Toxic effect of ketones, undetermined, initial encounter', 19.64, 50),
+(51, 'Mushroom', 'Corrosion of unspecified degree of left elbow', 30.78, 51),
+(52, 'benztropine mesylate', 'Pnctr w fb of l idx fngr w/o damage to nail, sequela', 64.78, 52),
+(53, 'Horse Epithelium', 'Displaced apophyseal fracture of right femur, init', 28.09, 53),
+(54, 'Polyethylene Glycol 400 and Propylene Glycol', 'Shock following (induced) termination of pregnancy', 72.43, 54),
+(55, 'Hydrocodone Bitartrate and Acetaminophen', 'Azoospermia due to systemic disease', 97.13, 55),
+(56, 'Tolnaftate 1%', 'Abrasion of unspecified thumb, subsequent encounter', 96.27, 56),
+(57, 'ETHYL ALCOHOL', 'Nondisp transverse fx shaft of r fibula, 7thH', 64.22, 57),
+(58, 'Mercurius Vivus', 'Fracture of manubrium, subs for fx w delay heal', 85.95, 58),
+(59, 'Theophylline', 'Nondisp commnt fx r patella, subs for clos fx w routn heal', 74.47, 59),
+(60, 'Olanzapine', 'Unsp pedal cyclist injured in collision w hv veh nontraf', 56.65, 60),
+(61, 'Antihemophilic Factor, Recombinant', 'Hemorrhoids in pregnancy, unspecified trimester', 51.07, 61),
+(62, 'abciximab', 'Occup of bus injured in clsn w nonmtr vehicle nontraf, init', 31.87, 62),
+(63, 'fentanyl citrate', 'Inj unsp blood vessel at shldr/up arm, right arm', 76.32, 63),
+(64, 'Acetaminophen, Chlorpheniramine maleate', 'Other subluxation of left wrist and hand, sequela', 81.58, 64),
+(65, 'FENTANYL CITRATE', 'Poisn by butyrophen/thiothixen neuroleptc, slf-hrm, sequela', 32.24, 65),
+(66, 'CHLOROXYLENOL', 'Assault by unspecified explosive, subsequent encounter', 70.97, 66),
+(67, 'Acetylcysteine', 'Crushing injury of left great toe, subsequent encounter', 44, 67),
+(68, 'Valacyclovir Hydrochloride', 'Traum subrac hem w LOC w death d/t oth cause bf consc, init', 62.87, 68),
+(69, 'Bryonia Stannum', 'Sprain of medial collateral ligament of right knee, init', 84.86, 69),
+(70, 'Phentermine Hydrochloride', 'Other subluxation of right knee, subsequent encounter', 73.96, 70),
+(71, 'Alcohol', 'Dislocation of distal interphaln joint of r idx fngr, init', 80.29, 71),
+(72, 'Levothyroxine Sodium', '30 weeks gestation of pregnancy', 59.6, 72),
+(73, 'GLYCERIN', 'Spastic entropion of left eye, unspecified eyelid', 81.91, 73),
+(74, 'Standardized Mite D. farinae', 'Athscl autol vein bypass of r leg w ulcer oth prt low leg', 39.34, 74),
+(75, 'Calcium polycarbophil', 'Blister (nonthermal) of hand', 82.21, 75),
+(76, 'amoxicillin', 'Sltr-haris Type II physl fx upr end l fibula, 7thK', 20.43, 76),
+(77, 'Avobenzone, Octisalate, Octocrylene, and Oxybenzone', 'Partial traumatic MCP amputation of finger, subs', 25.26, 77),
+(78, 'hydromorphone hydrochloride', 'Disp fx of unsp tibial spin, 7thF', 24.03, 78),
+(79, 'HYDROCODONE BITARTRATE AND ACETAMINOPHEN', 'Oth disp fx of base of 1st MC bone, r hand, 7thP', 56.78, 79),
+(80, 'Sildenafil citrate', 'Nondisp oblique fracture of shaft of right tibia, sequela', 64.9, 80),
+(81, 'Petrolatum', 'Urge incontinence', 36.77, 81),
+(82, 'Misoprostol', 'Puncture wound with foreign body of left buttock', 18.81, 82),
+(83, 'Avobenzone, Homosalate, Octisalate, Octocrylene, and Oxybenzone', 'Adverse effect of ganglionic blocking drugs, sequela', 53.33, 83),
+(84, 'Salsolinol hydrochloride, Cholesterinum', 'Encntr for suprvsn of normal first preg, second trimester', 55.91, 84),
+(85, 'Dextrose Monohydrate, Sodium Chloride, Sodium Lactate, Calcium Chloride, Magnesium Chloride', 'Underweight', 86.12, 85),
+(86, 'BENZOYL PEROXIDE', 'Toxic effect of taipan venom, assault, sequela', 70.21, 86),
+(87, 'Loratadine', 'Other hypertrophic osteoarthropathy, right forearm', 48.28, 87),
+(88, 'codeine sulfate', 'Monoplg low lmb following oth nontraumatic intcrn hemorrhage', 32.09, 88),
+(89, 'Donepezil Hydrochloride', 'Insect bite (nonvenomous) of unspecified elbow, subs encntr', 38.92, 89),
+(90, 'articaine hydrochloride and epinephrine bitartrate', 'Nondisp fx of lateral condyle of unspecified femur', 32.69, 90),
+(91, 'Bahia Grass', 'Other localized connective tissue disorders', 59.17, 91),
+(92, 'phenylephrine hydrochloride', 'Type 2 diab w hyprosm w/o nonket hyprgly-hypros coma (NKHHC)', 93.73, 92),
+(93, 'Tetracycline Hydrochloride', 'Oth disrd of ear in diseases classified elsewhere, bilateral', 57.25, 93),
+(94, 'Warfarin', 'Disp fx of med malleolus of unsp tibia, 7thE', 59.58, 94),
+(95, 'TITANIUM DIOXIDE', 'Nondisp fx of post pro of left talus, subs for fx w nonunion', 66.98, 95),
+(96, 'Venlafaxine', 'Oth fracture of T9-T10 vertebra, subs for fx w routn heal', 12.51, 96),
+(97, 'TITANIUM DIOXIDE, OCTINOXATE, ZINC OXIDE', 'Adverse effect of other opioids', 57.02, 97),
+(98, 'lisinopril', 'Poisoning by oth psychostimulants, undetermined, subs encntr', 60.97, 98),
+(99, 'Titanium Dioxide, Zinc Oxide, and Octinoxate', 'Nondisp fx of nk of scapula, r shldr, subs for fx w nonunion', 87.56, 99),
+(100, 'aluminum hydroxide, magnesium hydroxide, dimethicone', 'Mech compl of internal fixation device of left humerus', 37.24, 100);
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `purchase`
---
-
-CREATE TABLE `purchase` (
-  `idMedicine` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `user` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `purchase_price` double NOT NULL,
-  `purchase_date` date NOT NULL,
-  `cod` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `purchase`
---
-
-INSERT INTO `purchase` (`idMedicine`, `user`, `purchase_price`, `purchase_date`, `cod`, `quantity`) VALUES
-('104-30-7425', 'aobrogane8', 39.08, '2022-06-24', 19, 58),
-('104-40-1268', 'emilson4', 76.25, '2022-05-19', 85, 80),
-('124-01-1880', 'lmarsie6', 92.44, '2022-09-26', 77, 14),
-('124-82-8998', 'mzavittieri1', 20.42, '2022-01-29', 2, 23),
-('124-86-6893', 'emilson4', 12.88, '2022-07-01', 95, 87),
-('126-65-8522', 'chellewell0', 32.48, '2022-10-02', 31, 89),
-('128-70-1751', 'lmarsie6', 46.74, '2022-08-15', 97, 45),
-('129-28-9242', 'mnenci2', 60.84, '2022-10-25', 83, 90),
-('129-89-9094', 'ryakutin3', 85.19, '2022-07-04', 14, 43),
-('139-29-4470', 'ryakutin3', 56.67, '2022-09-22', 74, 81),
-('145-14-4178', 'lmarsie6', 21.67, '2022-09-18', 67, 63),
-('158-06-1617', 'aobrogane8', 48.53, '2022-10-22', 69, 94),
-('184-67-2074', 'jdenman9', 79.87, '2022-05-24', 100, 77),
-('189-44-2679', 'eregis5', 45.34, '2022-06-06', 56, 48),
-('191-08-2126', 'mzavittieri1', 64.51, '2022-03-11', 22, 71),
-('196-90-6131', 'ryakutin3', 78.46, '2022-10-23', 24, 70),
-('209-53-7067', 'lmarsie6', 98.35, '2022-06-19', 87, 62),
-('212-94-7959', 'aobrogane8', 12.08, '2022-03-10', 49, 69),
-('216-44-0923', 'rarno7', 42.51, '2022-02-14', 8, 5),
-('224-33-9090', 'mzavittieri1', 53.33, '2022-02-05', 52, 23),
-('225-49-1668', 'jdenman9', 19.12, '2022-01-29', 80, 34),
-('230-60-9879', 'chellewell0', 63.35, '2022-04-15', 41, 15),
-('239-87-9886', 'eregis5', 91.05, '2022-03-23', 46, 100),
-('248-59-5995', 'emilson4', 22.45, '2022-04-07', 5, 38),
-('253-24-1385', 'mzavittieri1', 69.21, '2022-03-13', 12, 20),
-('255-69-5370', 'mnenci2', 80.28, '2022-02-23', 63, 62),
-('284-97-8231', 'aobrogane8', 18.33, '2022-04-29', 79, 53),
-('300-70-9522', 'chellewell0', 50.95, '2022-03-28', 91, 29),
-('304-58-5554', 'emilson4', 63.09, '2022-07-26', 75, 24),
-('310-82-1088', 'rarno7', 50.42, '2022-04-14', 78, 7),
-('317-93-7868', 'jdenman9', 85.39, '2022-02-20', 90, 69),
-('325-87-0358', 'ryakutin3', 98.06, '2022-01-14', 94, 60),
-('335-85-0652', 'eregis5', 75.81, '2021-11-23', 26, 76),
-('342-82-4607', 'eregis5', 34.5, '2022-03-07', 36, 96),
-('350-12-5953', 'jdenman9', 23.52, '2022-08-11', 10, 88),
-('358-78-5966', 'emilson4', 72.06, '2021-11-23', 15, 92),
-('363-06-2343', 'jdenman9', 31.48, '2022-04-15', 30, 16),
-('363-31-2987', 'mnenci2', 67.18, '2022-07-19', 93, 93),
-('376-17-3203', 'aobrogane8', 57.53, '2022-08-02', 29, 23),
-('402-33-1674', 'rarno7', 36.32, '2022-06-15', 68, 58),
-('418-03-1324', 'mzavittieri1', 97.95, '2022-08-17', 72, 61),
-('419-57-0196', 'eregis5', 18.14, '2022-07-09', 76, 23),
-('421-32-2345', 'mzavittieri1', 19.06, '2022-04-12', 62, 33),
-('425-02-3345', 'lmarsie6', 35.5, '2022-09-15', 57, 77),
-('425-24-1737', 'eregis5', 86.93, '2022-10-06', 96, 60),
-('446-65-3907', 'jdenman9', 12.42, '2022-05-01', 60, 10),
-('455-62-8194', 'mzavittieri1', 42.23, '2022-09-13', 92, 96),
-('457-29-2452', 'chellewell0', 86.32, '2022-08-21', 81, 99),
-('482-44-1584', 'ryakutin3', 39.73, '2022-10-10', 4, 50),
-('482-64-2006', 'jdenman9', 52.65, '2022-03-07', 70, 19),
-('506-43-2257', 'emilson4', 37.11, '2022-09-16', 45, 78),
-('513-87-8360', 'mnenci2', 78.82, '2022-10-29', 3, 22),
-('514-18-5333', 'aobrogane8', 86.15, '2021-12-25', 9, 77),
-('525-64-7796', 'lmarsie6', 29.1, '2022-03-30', 27, 61),
-('536-84-6441', 'chellewell0', 17.81, '2022-02-14', 71, 66),
-('539-17-7702', 'emilson4', 62.1, '2022-09-03', 25, 32),
-('545-45-2260', 'lmarsie6', 91.51, '2022-06-01', 47, 18),
-('570-09-4650', 'chellewell0', 46.45, '2022-07-25', 61, 72),
-('570-32-3355', 'eregis5', 35.67, '2022-10-23', 86, 44),
-('578-94-1189', 'lmarsie6', 37.99, '2022-04-15', 17, 10),
-('590-56-1864', 'aobrogane8', 89.28, '2022-09-05', 59, 31),
-('591-65-7320', 'chellewell0', 70.94, '2022-10-09', 11, 23),
-('603-52-4917', 'eregis5', 45.22, '2022-01-10', 66, 28),
-('606-58-0214', 'eregis5', 18.37, '2021-12-10', 16, 73),
-('611-31-6148', 'ryakutin3', 23.41, '2022-04-30', 44, 40),
-('611-51-1416', 'mzavittieri1', 72.95, '2021-11-29', 42, 10),
-('629-89-8848', 'chellewell0', 93.47, '2022-01-29', 51, 21),
-('635-61-4058', 'aobrogane8', 77.87, '2022-02-07', 89, 94),
-('643-62-7797', 'mnenci2', 31.07, '2022-09-28', 43, 37),
-('649-15-3879', 'aobrogane8', 87.69, '2022-10-26', 39, 60),
-('657-71-6000', 'jdenman9', 66.37, '2021-11-26', 50, 29),
-('664-91-0947', 'chellewell0', 80.43, '2021-11-12', 1, 70),
-('671-93-0050', 'ryakutin3', 11.64, '2022-07-28', 64, 20),
-('683-06-7768', 'emilson4', 59.85, '2022-06-10', 55, 29),
-('700-33-0506', 'jdenman9', 21.59, '2022-05-31', 40, 50),
-('701-20-7190', 'mzavittieri1', 98.08, '2022-09-22', 32, 47),
-('718-38-4668', 'rarno7', 23.93, '2022-04-17', 58, 15),
-('733-03-8144', 'mnenci2', 31.88, '2022-09-18', 23, 12),
-('749-21-4474', 'ryakutin3', 61.81, '2022-01-15', 54, 12),
-('753-31-0295', 'rarno7', 76.55, '2022-06-09', 18, 21),
-('754-52-3385', 'lmarsie6', 39.57, '2022-09-07', 37, 81),
-('757-55-0088', 'mnenci2', 65.25, '2022-10-04', 33, 23),
-('758-70-3997', 'eregis5', 47.9, '2022-06-26', 6, 59),
-('761-58-2391', 'mnenci2', 90.89, '2022-05-17', 13, 45),
-('765-08-0461', 'mzavittieri1', 95.06, '2022-05-05', 82, 71),
-('780-33-2906', 'jdenman9', 43.31, '2022-05-07', 20, 66),
-('792-42-5523', 'chellewell0', 62.9, '2022-08-30', 21, 22),
-('798-47-2292', 'ryakutin3', 44.43, '2022-07-02', 34, 30),
-('802-55-7255', 'rarno7', 49.41, '2022-03-02', 98, 11),
-('806-14-9832', 'emilson4', 41.05, '2021-11-08', 65, 61),
-('823-01-0056', 'rarno7', 35.2, '2022-10-21', 88, 77),
-('823-17-6434', 'aobrogane8', 62.21, '2022-01-18', 99, 90),
-('830-96-4692', 'ryakutin3', 52.33, '2022-01-28', 84, 5),
-('862-13-3551', 'rarno7', 29.07, '2022-09-06', 48, 92),
-('863-27-0860', 'mnenci2', 80.56, '2022-04-17', 73, 10),
-('867-51-9846', 'mnenci2', 23.8, '2022-07-22', 53, 80),
-('867-61-1801', 'lmarsie6', 88.41, '2022-09-25', 7, 20),
-('870-73-3951', 'rarno7', 21.96, '2022-06-15', 28, 78),
-('874-27-0954', 'emilson4', 12.2, '2022-09-24', 35, 88),
-('897-63-3072', 'rarno7', 27.97, '2021-12-10', 38, 83);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `Users`
---
-
 CREATE TABLE `Users` (
   `user` varchar(50) CHARACTER SET utf8 NOT NULL,
   `password` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -393,75 +280,169 @@ CREATE TABLE `Users` (
   `surname` varchar(50) CHARACTER SET utf8 NOT NULL,
   `birthday` date NOT NULL,
   `gender` varchar(1) CHARACTER SET utf8 NOT NULL,
-  `admin` tinyint(1) NOT NULL
+  `admin` tinyint(1) NOT NULL,
+    
+    CONSTRAINT pk_users PRIMARY KEY (user)
+
+    
+    
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
+
 -- Volcado de datos para la tabla `Users`
 --
 
 INSERT INTO `Users` (`user`, `password`, `name`, `surname`, `birthday`, `gender`, `admin`) VALUES
-('aobrogane8', 'd41d8cd98f00b204e9800998ecf8427e', 'Ann-marie', "O\'Brogane", '2003-02-03', 'F', 0),
-('chellewell0', 'd41d8cd98f00b204e9800998ecf8427e', 'Candie', 'Hellewell', '2017-02-02', 'F', 0),
-('emilson4', 'd41d8cd98f00b204e9800998ecf8427e', 'Erik', 'Milson', '2009-11-04', 'M', 1),
-('eregis5', 'd41d8cd98f00b204e9800998ecf8427e', 'Ebba', 'Regis', '2002-03-30', 'F', 1),
-('inma', 'd40dbcae0e7088fc4a7e1768cf8771da', 'inma', 'Olias', '1990-02-02', 'F', 1),
-('javi', 'a14f8a540e78dae706d255750010a0f8', 'javi', 'villarreal', '2003-04-28', 'M', 1),
-('jdenman9', 'd41d8cd98f00b204e9800998ecf8427e', 'Jayson', 'Denman', '2012-03-07', 'M', 0),
-('lmarsie6', 'd41d8cd98f00b204e9800998ecf8427e', 'Lefty', 'Marsie', '2018-08-16', 'M', 1),
-('mnenci2', 'd41d8cd98f00b204e9800998ecf8427e', 'Minetta', 'Nenci', '2016-12-27', 'F', 0),
-('mzavittieri1', 'd41d8cd98f00b204e9800998ecf8427e', 'Morgan', 'Zavittieri', '2009-04-26', 'M', 0),
-('rarno7', 'd41d8cd98f00b204e9800998ecf8427e', 'Raff', 'Arno', '2004-11-17', 'M', 1),
-('ryakutin3', 'd41d8cd98f00b204e9800998ecf8427e', 'Raine', 'Yakutin', '2002-09-29', 'F', 0);
+('cbrittles8', 'd41d8cd98f00b204e9800998ecf8427e', 'Ced', 'Brittles', '2021-01-25', 'M', 0),
+('dfoxall3', 'd41d8cd98f00b204e9800998ecf8427e', 'Dena', 'Foxall', '2014-04-02', 'F', 1),
+('ghourahan5', 'd41d8cd98f00b204e9800998ecf8427e', 'Gerta', 'Hourahan', '2001-09-03', 'F', 0),
+('gjefford6', 'd41d8cd98f00b204e9800998ecf8427e', 'Guillaume', 'Jefford', '2007-12-13', 'M', 1),
+('ibehr0', 'd41d8cd98f00b204e9800998ecf8427e', 'Inigo', 'Behr', '2001-02-09', 'M', 1),
+('inma', 'd40dbcae0e7088fc4a7e1768cf8771da', 'Inmaculada', 'Olias', '2016-04-03', 'F', 1),
+('javi', 'a14f8a540e78dae706d255750010a0f8', 'Javier', 'Villarreal', '2016-04-03', 'M', 1),
+('jsartain1', 'd41d8cd98f00b204e9800998ecf8427e', 'Jeffrey', 'Sartain', '2012-04-26', 'M', 0),
+('kmaskell2', 'd41d8cd98f00b204e9800998ecf8427e', 'Keefe', 'Maskell', '2019-09-26', 'M', 0),
+('lstefi9', 'd41d8cd98f00b204e9800998ecf8427e', 'Levin', 'Stefi', '2016-04-03', 'M', 0),
+('mfalloon7', 'd41d8cd98f00b204e9800998ecf8427e', 'Marthena', 'Falloon', '2020-04-06', 'F', 0),
+('pniland4', 'd41d8cd98f00b204e9800998ecf8427e', 'Piggy', 'Niland', '2000-11-13', 'M', 1);
+
+
+
+CREATE TABLE `purchase` (
+  `idMedicine` int(11) NOT NULL ,
+  `user` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `purchase_price` double NOT NULL,
+  `purchase_date` date NOT NULL,
+  `cod` int(11) NOT NULL AUTO_INCREMENT,
+  `cuantity` int(11) NOT NULL,
+    
+    CONSTRAINT pk_cod PRIMARY KEY (cod,idMedicine,user),
+    CONSTRAINT fk_pr FOREIGN KEY (idMedicine) REFERENCES Medicine(id),
+    CONSTRAINT fk_pur FOREIGN KEY (user) REFERENCES Users(user)
+
+    
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Índices para tablas volcadas
+-- Volcado de datos para la tabla `purchase`
 --
 
---
--- Indices de la tabla `Category`
---
-ALTER TABLE `Category`
-  ADD PRIMARY KEY (`id`);
+INSERT INTO `purchase` (`idMedicine`, `user`, `purchase_price`, `purchase_date`, `cod`, `cuantity`) VALUES
+(1, 'ibehr0', 89.08, '2022-08-23', 1, 82),
+(2, 'jsartain1', 55.84, '2022-10-20', 2, 53),
+(3, 'kmaskell2', 62.05, '2022-01-23', 3, 53),
+(4, 'dfoxall3', 51.79, '2022-03-19', 4, 60),
+(5, 'pniland4', 71.91, '2022-04-21', 5, 23),
+(6, 'ghourahan5', 61.1, '2022-07-13', 6, 40),
+(7, 'gjefford6', 88.83, '2022-11-06', 7, 7),
+(8, 'mfalloon7', 34.97, '2022-10-03', 8, 57),
+(9, 'cbrittles8', 54.85, '2022-01-08', 9, 16),
+(10, 'lstefi9', 33.47, '2022-08-07', 10, 12),
+(11, 'ibehr0', 78.04, '2021-12-13', 11, 89),
+(12, 'jsartain1', 96.43, '2022-11-06', 12, 29),
+(13, 'kmaskell2', 59.96, '2022-08-30', 13, 14),
+(14, 'dfoxall3', 58.29, '2021-12-17', 14, 6),
+(15, 'pniland4', 14.7, '2022-02-07', 15, 52),
+(16, 'ghourahan5', 78.61, '2022-10-02', 16, 58),
+(17, 'gjefford6', 52.95, '2022-03-22', 17, 86),
+(18, 'mfalloon7', 15.73, '2022-05-09', 18, 95),
+(19, 'cbrittles8', 52.16, '2022-03-28', 19, 39),
+(20, 'lstefi9', 66.24, '2022-04-01', 20, 18),
+(21, 'ibehr0', 60.7, '2022-05-09', 21, 57),
+(22, 'jsartain1', 62.62, '2022-05-09', 22, 81),
+(23, 'kmaskell2', 76.97, '2022-04-10', 23, 24),
+(24, 'dfoxall3', 92.01, '2022-09-12', 24, 14),
+(25, 'pniland4', 52.25, '2022-06-17', 25, 4),
+(26, 'ghourahan5', 55.82, '2022-08-06', 26, 45),
+(27, 'gjefford6', 99.72, '2022-11-06', 27, 15),
+(28, 'mfalloon7', 40.47, '2022-01-18', 28, 53),
+(29, 'cbrittles8', 67.89, '2022-10-09', 29, 87),
+(30, 'lstefi9', 61.01, '2022-09-02', 30, 35),
+(31, 'ibehr0', 77.39, '2021-12-25', 31, 34),
+(32, 'jsartain1', 75.32, '2022-01-14', 32, 26),
+(33, 'kmaskell2', 74.11, '2021-12-29', 33, 5),
+(34, 'dfoxall3', 23.62, '2022-03-19', 34, 44),
+(35, 'pniland4', 22.02, '2021-12-18', 35, 35),
+(36, 'ghourahan5', 96.24, '2022-05-12', 36, 70),
+(37, 'gjefford6', 62.44, '2022-09-30', 37, 56),
+(38, 'mfalloon7', 45.03, '2022-05-24', 38, 61),
+(39, 'cbrittles8', 21.2, '2022-09-02', 39, 52),
+(40, 'lstefi9', 97.06, '2022-04-04', 40, 29),
+(41, 'ibehr0', 14.42, '2022-10-20', 41, 80),
+(42, 'jsartain1', 20.74, '2022-10-04', 42, 58),
+(43, 'kmaskell2', 11.2, '2021-12-07', 43, 59),
+(44, 'dfoxall3', 57.1, '2022-06-01', 44, 27),
+(45, 'pniland4', 96.47, '2022-03-06', 45, 75),
+(46, 'ghourahan5', 15.34, '2022-07-31', 46, 21),
+(47, 'gjefford6', 28.7, '2022-07-29', 47, 96),
+(48, 'mfalloon7', 51.45, '2021-12-17', 48, 38),
+(49, 'cbrittles8', 35.73, '2022-03-03', 49, 81),
+(50, 'lstefi9', 60.84, '2022-01-27', 50, 89),
+(51, 'ibehr0', 95.29, '2022-07-06', 51, 67),
+(52, 'jsartain1', 38.22, '2022-10-05', 52, 56),
+(53, 'kmaskell2', 96.38, '2021-11-30', 53, 48),
+(54, 'dfoxall3', 64.11, '2022-03-19', 54, 89),
+(55, 'pniland4', 47.46, '2022-09-01', 55, 64),
+(56, 'ghourahan5', 10.78, '2022-05-12', 56, 79),
+(57, 'gjefford6', 21.96, '2022-04-05', 57, 28),
+(58, 'mfalloon7', 88.28, '2022-06-12', 58, 32),
+(59, 'cbrittles8', 95.49, '2022-03-18', 59, 93),
+(60, 'lstefi9', 47, '2021-12-27', 60, 33),
+(61, 'ibehr0', 29.06, '2022-08-23', 61, 57),
+(62, 'jsartain1', 73.8, '2022-05-07', 62, 5),
+(63, 'kmaskell2', 93.38, '2022-04-21', 63, 58),
+(64, 'dfoxall3', 43.42, '2022-04-12', 64, 48),
+(65, 'pniland4', 64.8, '2022-08-31', 65, 67),
+(66, 'ghourahan5', 10.72, '2022-08-16', 66, 23),
+(67, 'gjefford6', 36.17, '2022-08-28', 67, 6),
+(68, 'mfalloon7', 84.81, '2022-06-12', 68, 90),
+(69, 'cbrittles8', 12.63, '2022-08-21', 69, 83),
+(70, 'lstefi9', 51.05, '2022-01-06', 70, 38),
+(71, 'ibehr0', 53.62, '2022-02-15', 71, 99),
+(72, 'jsartain1', 57.33, '2022-06-13', 72, 28),
+(73, 'kmaskell2', 85.16, '2022-03-14', 73, 81),
+(74, 'dfoxall3', 96.59, '2022-04-06', 74, 5),
+(75, 'pniland4', 27.35, '2022-09-26', 75, 52),
+(76, 'ghourahan5', 88.48, '2022-01-16', 76, 41),
+(77, 'gjefford6', 38.41, '2022-06-30', 77, 7),
+(78, 'mfalloon7', 95.39, '2022-07-28', 78, 74),
+(79, 'cbrittles8', 63.48, '2022-10-26', 79, 82),
+(80, 'lstefi9', 52.24, '2022-02-25', 80, 37),
+(81, 'ibehr0', 63.86, '2022-08-10', 81, 39),
+(82, 'jsartain1', 87.82, '2022-01-07', 82, 33),
+(83, 'kmaskell2', 35.39, '2022-10-12', 83, 27),
+(84, 'dfoxall3', 10.57, '2021-11-11', 84, 4),
+(85, 'pniland4', 22.85, '2022-07-12', 85, 58),
+(86, 'ghourahan5', 73.42, '2022-06-08', 86, 47),
+(87, 'gjefford6', 25.51, '2022-06-11', 87, 24),
+(88, 'mfalloon7', 46.75, '2022-04-05', 88, 80),
+(89, 'cbrittles8', 99.55, '2022-02-24', 89, 64),
+(90, 'lstefi9', 73.07, '2022-06-10', 90, 70),
+(91, 'ibehr0', 97.1, '2021-12-21', 91, 90),
+(92, 'jsartain1', 86.84, '2022-05-19', 92, 24),
+(93, 'kmaskell2', 58.36, '2022-02-02', 93, 8),
+(94, 'dfoxall3', 77.79, '2022-05-13', 94, 75),
+(95, 'pniland4', 60.15, '2021-12-19', 95, 39),
+(96, 'ghourahan5', 35.99, '2022-07-15', 96, 57),
+(97, 'gjefford6', 63.9, '2022-02-03', 97, 54),
+(98, 'mfalloon7', 25.65, '2021-11-16', 98, 53),
+(99, 'cbrittles8', 96.35, '2022-06-23', 99, 90),
+(100, 'lstefi9', 87.05, '2022-05-09', 100, 85);
+
+-- --------------------------------------------------------
 
 --
--- Indices de la tabla `Medicine`
---
-ALTER TABLE `Medicine`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_P` (`category`);
-
---
--- Indices de la tabla `purchase`
---
-ALTER TABLE `purchase`
-  ADD PRIMARY KEY (`idMedicine`,`user`,`cod`),
-  ADD KEY `user` (`user`);
-
---
--- Indices de la tabla `Users`
---
-ALTER TABLE `Users`
-  ADD PRIMARY KEY (`user`);
-
---
--- Restricciones para tablas volcadas
+-- Estructura de tabla para la tabla `Users`
 --
 
---
--- Filtros para la tabla `Medicine`
---
-ALTER TABLE `Medicine`
-  ADD CONSTRAINT `FK_P` FOREIGN KEY (`category`) REFERENCES `Category` (`id`);
 
---
--- Filtros para la tabla `purchase`
---
-ALTER TABLE `purchase`
-  ADD CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`user`) REFERENCES `Users` (`user`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `purchase_ibfk_3` FOREIGN KEY (`idMedicine`) REFERENCES `Medicine` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
 COMMIT;
 
+CREATE USER 'villarreal'@'%' IDENTIFIED BY 'javier';
+
+GRANT ALL PRIVILEGES ON MedicamentosJvh.* to 'villarreal'@'%';
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

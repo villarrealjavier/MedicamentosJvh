@@ -16,8 +16,6 @@
     
     if(usuario !=null && password !=null){
     	if(UtilUsers.userAdminIsValid(usuario, password)){
-            			
-         	HttpSession userSession = request.getSession();
          	session.setAttribute("login", "True");
          	session.setAttribute("usuario", usuario);
          	response.sendRedirect(request.getContextPath() + "/Index");
