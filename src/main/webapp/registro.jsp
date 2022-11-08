@@ -18,7 +18,7 @@
                      
         <div id="centroLogin" align="center">
      	
-        	<form action="CheckRegister.jsp"  method="post">
+        	<form action="Register"  method="post">
             	<h1 id="titulo">Bienvenido a Registro</h1>
             	
 	            <label>Username:</label>

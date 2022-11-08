@@ -33,45 +33,63 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("<!DOCTYPE html>"
-				+ "<html>"
-				+ "<head>"
-				+ "<meta charset=\"UTF-8\">"
-				+ "<title>"
-				+ "Catalogo Medicinas"
-				+ "</title>"
-				+ "<link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>"
-				+ "</head>"
-				+ "<body background='posibleFondo.png'>"
-				+ "<div>"
-				+ "<table border='2'>"
-				+ "<tr>"
-				+ "<th id='id'>Id: </th>"
-				+ "<th id='name'>Name: </th>"
-				+ "<th id='description'>Description: </th>"
-				+ "<th id='price'>Price: </th>"
-				+ "<th id='price'>Name Category: </th>"
-				+ "</tr>");
-				List<Medicine> lista = null;
-				lista = CRUDMedicine.getMedicines();
-				Iterator<Medicine> iterador = lista.iterator();
-				while(iterador.hasNext()) {
-					 Medicine m = iterador.next();
-							 
-					response.getWriter().append("<tr>"
-					+ "<td>" + m.getId() + "</td>"
-					+ "<td>" + m.getName()+ "</td>"
-					+ "<td>" + m.getDescription() + "</td>"
-					+ "<td>" + m.getPrice() + "</td>"
-					+ "<td>" + m.getCategory().getName() + "</td>"
-					+ "</tr>"); 
-					}
-	
-				response.getWriter().append( "</table>"
-				+ "</div>"
-				+ "</body>"
-				+ "</head>"
-				+ "</html>");
+		String usuario = request.getParameter("user");
+	   	String password = request.getParameter("password");
+	            	
+	    
+	    
+	    if(usuario !=null && password !=null){
+	    	if(UtilUsers.userAdminIsValid(usuario, password)){
+	    		HttpSession userSession = request.getSession();
+	    		userSession.setAttribute("login", "True");
+	    		userSession.setAttribute("usuario", usuario);
+	         	
+	         	response.getWriter().append("<!DOCTYPE html>"
+	    				+ "<html>"
+	    				+ "<head>"
+	    				+ "<meta charset=\"UTF-8\">"
+	    				+ "<title>"
+	    				+ "Catalogo Medicinas"
+	    				+ "</title>"
+	    				+ "<link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>"
+	    				+ "</head>"
+	    				+ "<body background='posibleFondo.png'>"
+	    				+ "<div>"
+	    				+ "<table border='2'>"
+	    				+ "<tr>"
+	    				+ "<th id='id'>Id: </th>"
+	    				+ "<th id='name'>Name: </th>"
+	    				+ "<th id='description'>Description: </th>"
+	    				+ "<th id='price'>Price: </th>"
+	    				+ "<th id='price'>Name Category: </th>"
+	    				+ "</tr>");
+	    				List<Medicine> lista = null;
+	    				lista = CRUDMedicine.getMedicines();
+	    				Iterator<Medicine> iterador = lista.iterator();
+	    				while(iterador.hasNext()) {
+	    					 Medicine m = iterador.next();
+	    							 
+	    					response.getWriter().append("<tr>"
+	    					+ "<td>" + m.getId() + "</td>"
+	    					+ "<td>" + m.getName()+ "</td>"
+	    					+ "<td>" + m.getDescription() + "</td>"
+	    					+ "<td>" + m.getPrice() + "</td>"
+	    					+ "<td>" + m.getCategory().getName() + "</td>"
+	    					+ "</tr>"); 
+	    					}
+	    	
+	    				response.getWriter().append( "</table>"
+	    				+ "</div>"
+	    				+ "</body>"
+	    				+ "</head>"
+	    				+ "</html>");
+	    		
+	            		
+	    	} else { 
+	       		response.sendRedirect("error.jsp?msg_error=true");
+	  	 	}
+		 }
+		
 	}
 
 	/**

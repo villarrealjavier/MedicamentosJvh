@@ -25,7 +25,7 @@
                      
         <div id="centroLogin">
      
-        	<form action="checkLogin.jsp"  method="post">
+        	<form action="Index"  method="post">
             	<h1 id="titulo">Bienvenido</h1>
 				<%
 				//Se comprueba si existe la variable error que vendría true del checkLogin si algun campo fuese incorrecto
