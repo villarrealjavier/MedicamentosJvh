@@ -3,14 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysqlDawes:3306
--- Tiempo de generación: 08-11-2022 a las 08:49:43
+-- Tiempo de generación: 09-11-2022 a las 07:18:53
 -- Versión del servidor: 5.7.22
 -- Versión de PHP: 8.0.19
 
 CREATE DATABASE MedicamentosJvh;
 USE MedicamentosJvh;
-
-
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,14 +31,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `name` varchar(150) CHARACTER SET utf8 NOT NULL,
   `description` varchar(150) CHARACTER SET utf8 NOT NULL,
-    
-    CONSTRAINT pk_c PRIMARY KEY (id)
-    
+  
+  CONSTRAINT pk_c PRIMARY KEY (id)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Volcado de datos para la tabla `Category`
@@ -155,26 +152,26 @@ INSERT INTO `Category` (`id`, `name`, `description`) VALUES
 --
 
 CREATE TABLE `Medicine` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(150) CHARACTER SET utf8 NOT NULL UNIQUE,
   `description` varchar(150) CHARACTER SET utf8 NOT NULL,
   `price` double NOT NULL,
   `Category` int(11) NOT NULL,
-    
-   CONSTRAINT pk_m PRIMARY KEY (id),
+  
+  CONSTRAINT pk_m PRIMARY KEY (id),
     CONSTRAINT fk_c FOREIGN KEY (Category) REFERENCES Category(id)
+    
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
 --
 -- Volcado de datos para la tabla `Medicine`
 --
 
 INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (1, 'Duloxetine', 'Extravasation of vesicant antineoplastic chemotherapy, subs', 72.4, 1),
-(2, 'Calcium Polycarbophil', 'Blister (nonthermal), right lower leg, sequela', 70.37, 2),
+(2, 'Polycarbophil', 'Blister (nonthermal), right lower leg, sequela', 70.37, 2),
 (3, 'ZINC OXIDE', 'Central serous chorioretinopathy, unspecified eye', 40.7, 3),
-(4, 'Sodium Fluoride', 'Oth disp fx of base of 1st MC bone, unsp hand, 7thK', 90.03, 4),
+(4, 'Sodium Fluor', 'Oth disp fx of base of 1st MC bone, unsp hand, 7thK', 90.03, 4),
 (5, 'DIETHYLPROPION HYDROCHLORIDE', 'Laceration of right quadriceps muscle, fascia and tendon', 57.21, 5),
 (6, 'metoprolol succinate', 'Rupture in Descemets membrane', 88.69, 6),
 (7, 'Tramadol Hydrochloride and Acetaminophen', 'Subluxation of midcarpal joint of left wrist, init encntr', 33.21, 7),
@@ -188,7 +185,7 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (15, 'Dapsone', 'Antipruritics', 90.06, 15),
 (16, 'RANITIDINE HYDROCHLORIDE', 'Nondisp transverse fx shaft of r ulna, 7thP', 82.04, 16),
 (17, 'Felodipine', 'Thyrotoxicosis, unspecified with thyrotoxic crisis or storm', 78.71, 17),
-(18, 'clonazepam', 'Pnctr w/o fb of low back and pelv w penet retroperiton, sqla', 76.82, 18),
+(18, 'clonazepamium', 'Pnctr w/o fb of low back and pelv w penet retroperiton, sqla', 76.82, 18),
 (19, 'TESTOSTERONE', 'Quadruplets, some liveborn', 95.33, 19),
 (20, 'cefazolin sodium', 'Autoinflammatory syndrome, unspecified', 24.2, 20),
 (21, 'Phenylephrine HCl', 'Unsp fracture of shaft of right tibia, init for clos fx', 75.87, 21),
@@ -197,16 +194,16 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (24, 'Ramipril', 'Anterior subluxation of right ulnohumeral joint, subs encntr', 29.36, 24),
 (25, 'Ondansetron', 'Inj to rider of nonrecr wtrcrft puld beh oth wtrcrft, init', 48.1, 25),
 (26, 'Oxygen', 'Underdosing of anthelminthics, subsequent encounter', 66.42, 26),
-(27, 'Avobenzone, Homosalate, Octisalate, Octocrylene, and Oxybenzone', 'Unsp nondisp fx of 2nd cervcal vert, 7thG', 29.14, 27),
+(27, ' Octisalate, Octocrylene, and Oxybenzone', 'Unsp nondisp fx of 2nd cervcal vert, 7thG', 29.14, 27),
 (28, 'Tacrolimus', 'Disp fx of distal phalanx of thmb, subs for fx w delay heal', 38.34, 28),
 (29, 'Gabapentin', 'Onchocerciasis with endophthalmitis', 73.14, 29),
 (30, 'Carvedilol', 'Nondisp osteochon fx l patella, 7thE', 42.95, 30),
 (31, 'Antimon. crud., Arsenicum alb., Berber. vulg', 'Wedge comprsn fx third lelay heal', 79.27, 31),
 (32, 'GENTAMICIN SULFATE', 'Enophthalmos due to atrophy of orbital tissue, unsp eye', 90.3, 32),
 (33, 'temazepam', 'Infectious mononucleosis, unspecified with meningitis', 95.96, 33),
-(34, 'Sodium Chloride', 'Minor laceration of left pulmonary blood vessels', 50.89, 34),
+(34, 'Sodium Chloro', 'Minor laceration of left pulmonary blood vessels', 50.89, 34),
 (35, 'HYPERICUM PERFORATUM', 'Folate deficiency anemia', 71.81, 35),
-(36, 'Donepezil Hydrochloride', 'Corrosion of first degree of right forearm, sequela', 40.86, 36),
+(36, 'Hydrochloride Sodico', 'Corrosion of first degree of right forearm, sequela', 40.86, 36),
 (37, 'OCTINOXATE, OXYBENZONE', 'Nondisplaced apophyseal fracture of right femur, init', 48.1, 37),
 (38, 'SODIUM CHLORIDE', 'Carbuncle of left upper limb', 53.85, 38),
 (39, 'Octinoxate and Titanium Dioxide', 'Other subluxation of left ulnohumeral joint', 71.2, 39),
@@ -225,7 +222,7 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (52, 'benztropine mesylate', 'Pnctr w fb of l idx fngr w/o damage to nail, sequela', 64.78, 52),
 (53, 'Horse Epithelium', 'Displaced apophyseal fracture of right femur, init', 28.09, 53),
 (54, 'Polyethylene Glycol 400 and Propylene Glycol', 'Shock following (induced) termination of pregnancy', 72.43, 54),
-(55, 'Hydrocodone Bitartrate and Acetaminophen', 'Azoospermia due to systemic disease', 97.13, 55),
+(55, 'Acetaminophen', 'Azoospermia due to systemic disease', 97.13, 55),
 (56, 'Tolnaftate 1%', 'Abrasion of unspecified thumb, subsequent encounter', 96.27, 56),
 (57, 'ETHYL ALCOHOL', 'Nondisp transverse fx shaft of r fibula, 7thH', 64.22, 57),
 (58, 'Mercurius Vivus', 'Fracture of manubrium, subs for fx w delay heal', 85.95, 58),
@@ -233,7 +230,7 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (60, 'Olanzapine', 'Unsp pedal cyclist injured in collision w hv veh nontraf', 56.65, 60),
 (61, 'Antihemophilic Factor, Recombinant', 'Hemorrhoids in pregnancy, unspecified trimester', 51.07, 61),
 (62, 'abciximab', 'Occup of bus injured in clsn w nonmtr vehicle nontraf, init', 31.87, 62),
-(63, 'fentanyl citrate', 'Inj unsp blood vessel at shldr/up arm, right arm', 76.32, 63),
+(63, 'fentanyl ', 'Inj unsp blood vessel at shldr/up arm, right arm', 76.32, 63),
 (64, 'Acetaminophen, Chlorpheniramine maleate', 'Other subluxation of left wrist and hand, sequela', 81.58, 64),
 (65, 'FENTANYL CITRATE', 'Poisn by butyrophen/thiothixen neuroleptc, slf-hrm, sequela', 32.24, 65),
 (66, 'CHLOROXYLENOL', 'Assault by unspecified explosive, subsequent encounter', 70.97, 66),
@@ -241,13 +238,13 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (68, 'Valacyclovir Hydrochloride', 'Traum subrac hem w LOC w death d/t oth cause bf consc, init', 62.87, 68),
 (69, 'Bryonia Stannum', 'Sprain of medial collateral ligament of right knee, init', 84.86, 69),
 (70, 'Phentermine Hydrochloride', 'Other subluxation of right knee, subsequent encounter', 73.96, 70),
-(71, 'Alcohol', 'Dislocation of distal interphaln joint of r idx fngr, init', 80.29, 71),
+(71, 'Alcoholium', 'Dislocation of distal interphaln joint of r idx fngr, init', 80.29, 71),
 (72, 'Levothyroxine Sodium', '30 weeks gestation of pregnancy', 59.6, 72),
 (73, 'GLYCERIN', 'Spastic entropion of left eye, unspecified eyelid', 81.91, 73),
 (74, 'Standardized Mite D. farinae', 'Athscl autol vein bypass of r leg w ulcer oth prt low leg', 39.34, 74),
 (75, 'Calcium polycarbophil', 'Blister (nonthermal) of hand', 82.21, 75),
 (76, 'amoxicillin', 'Sltr-haris Type II physl fx upr end l fibula, 7thK', 20.43, 76),
-(77, 'Avobenzone, Octisalate, Octocrylene, and Oxybenzone', 'Partial traumatic MCP amputation of finger, subs', 25.26, 77),
+(77, 'Octisalate, Octocrylene, and Oxybenzone', 'Partial traumatic MCP amputation of finger, subs', 25.26, 77),
 (78, 'hydromorphone hydrochloride', 'Disp fx of unsp tibial spin, 7thF', 24.03, 78),
 (79, 'HYDROCODONE BITARTRATE AND ACETAMINOPHEN', 'Oth disp fx of base of 1st MC bone, r hand, 7thP', 56.78, 79),
 (80, 'Sildenafil citrate', 'Nondisp oblique fracture of shaft of right tibia, sequela', 64.9, 80),
@@ -273,6 +270,10 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 (100, 'aluminum hydroxide, magnesium hydroxide, dimethicone', 'Mech compl of internal fixation device of left humerus', 37.24, 100);
 
 -- --------------------------------------------------------
+--
+-- Estructura de tabla para la tabla `Users`
+--
+
 CREATE TABLE `Users` (
   `user` varchar(50) CHARACTER SET utf8 NOT NULL,
   `password` varchar(50) CHARACTER SET utf8 NOT NULL,
@@ -281,14 +282,12 @@ CREATE TABLE `Users` (
   `birthday` date NOT NULL,
   `gender` varchar(1) CHARACTER SET utf8 NOT NULL,
   `admin` tinyint(1) NOT NULL,
-    
-    CONSTRAINT pk_users PRIMARY KEY (user)
-
-    
-    
+  
+  CONSTRAINT pk_users PRIMARY KEY (user)
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+--
 -- Volcado de datos para la tabla `Users`
 --
 
@@ -308,19 +307,19 @@ INSERT INTO `Users` (`user`, `password`, `name`, `surname`, `birthday`, `gender`
 
 
 
+
 CREATE TABLE `purchase` (
-  `idMedicine` int(11) NOT NULL ,
+  `idMedicine` int(11) NOT NULL,
   `user` varchar(50) CHARACTER SET utf8 NOT NULL,
   `purchase_price` double NOT NULL,
   `purchase_date` date NOT NULL,
-  `cod` int(11) NOT NULL AUTO_INCREMENT,
+  `cod` int(11) NOT NULL,
   `cuantity` int(11) NOT NULL,
-    
-    CONSTRAINT pk_cod PRIMARY KEY (cod,idMedicine,user),
+  
+     CONSTRAINT pk_cod PRIMARY KEY (cod,idMedicine,user),
     CONSTRAINT fk_pr FOREIGN KEY (idMedicine) REFERENCES Medicine(id),
     CONSTRAINT fk_pur FOREIGN KEY (user) REFERENCES Users(user)
-
-    
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -431,18 +430,19 @@ INSERT INTO `purchase` (`idMedicine`, `user`, `purchase_price`, `purchase_date`,
 
 -- --------------------------------------------------------
 
+
+
 --
--- Estructura de tabla para la tabla `Users`
+-- Índices para tablas volcadas
 --
 
-
-
+--
 
 COMMIT;
 
 CREATE USER 'villarreal'@'%' IDENTIFIED BY 'javier';
-
 GRANT ALL PRIVILEGES ON MedicamentosJvh.* to 'villarreal'@'%';
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

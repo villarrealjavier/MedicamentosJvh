@@ -86,7 +86,29 @@ public class Index extends HttpServlet {
 	    		
 	            		
 	    	} else { 
-	       		response.sendRedirect("error.jsp?msg_error=true");
+	       		response.getWriter().append("<!DOCTYPE html>\n"
+	       				+ "<html>\n"
+	       				+ "<head>\n"
+	       				+ "<meta charset=\"ISO-8859-1\">\n"
+	       				+ "<title>Error 404</title>\n"
+	       				+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
+	       				+ " \n"
+	       				+ "</head>\n"
+	       				+ "<body background=\"images/errorPagina.png\">\n"
+	       				+ "      <a href=\"Login.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
+	       				+ "            <hr>\n"
+	       				+ "            <div id=\"izq\">\n"
+	       				+ "                \n"
+	       				+ "                <img src=\"images/error.png\" id=\"iconoError\">\n"
+	       				+ "            </div>\n"
+	       				+ "            <div id=\"der\">\n"
+	       				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
+	       				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido encontrar<br> la página que buscas.</FONT></h3>\n"
+	       				+ "                <h7 id=\"codError\">Codigo de error: 404</h7>\n"
+	       				+ "            </div>\n"
+	       				+ "</body>\n"
+	       				+ "</html>\n"
+	       				+ "</html>");
 	  	 	}
 		 }
 		
