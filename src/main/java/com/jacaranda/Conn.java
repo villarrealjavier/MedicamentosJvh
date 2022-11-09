@@ -10,7 +10,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 /**
- * Clase con la que realizaremos la conexión a base de datos.
+ * Clase con la que realizaremos la conexiï¿½n a base de datos.
  */
 
 public class Conn {

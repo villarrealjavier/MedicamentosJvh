@@ -18,7 +18,8 @@
 		color:black;
 	}
 	
-	#addButton{
+	#add{
+		align-items:right;
 	    text-decoration: none;
 	    padding: 10px;
 	    font-weight: 600;
@@ -28,7 +29,7 @@
 	    border-radius: 6px;
 	    border: 2px solid #7e87c5;
 	}
-	#addButton:hover{
+	#add:hover{
 	    color: #222d7a;
 	    background-color: #ffffff;
   	}

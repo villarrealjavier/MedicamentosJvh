@@ -39,7 +39,7 @@ public class Index extends HttpServlet {
 	    
 	    
 	    if(usuario !=null && password !=null){
-	    	if(UtilUsers.userAdminIsValid(usuario, password)){
+	    	if(UtilUsers.userIsValid(usuario, password)){
 	    		HttpSession userSession = request.getSession();
 	    		userSession.setAttribute("login", "True");
 	    		userSession.setAttribute("usuario", usuario);
@@ -54,8 +54,19 @@ public class Index extends HttpServlet {
 	    				+ "<link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>"
 	    				+ "</head>"
 	    				+ "<body background='posibleFondo.png'>"
-	    				+ "<div>"
-	    				+ "<table border='2'>"
+	    				+ "<div>");
+	         	if(UtilUsers.userAdminIAdmin(usuario, password)) {
+	         		response.getWriter().append("<div>"
+	         				+  "<a href='#'><img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'></a>"
+	         				+ "<br>"
+	         				+ "<a href='addProduct.jsp'><input type='button' name='add' id='add' value='Add Products' align='right'></a>"
+	         				
+	         				+ "<br>"
+	         				+ "</div>"
+	         				+ "<br>");
+	         	}
+	         	
+	    				response.getWriter().append("<table border='2'>"
 	    				+ "<tr>"
 	    				+ "<th id='id'>Id: </th>"
 	    				+ "<th id='name'>Name: </th>"
@@ -86,32 +97,36 @@ public class Index extends HttpServlet {
 	    		
 	            		
 	    	} else { 
-	       		response.getWriter().append("<!DOCTYPE html>\n"
-	       				+ "<html>\n"
-	       				+ "<head>\n"
-	       				+ "<meta charset=\"ISO-8859-1\">\n"
-	       				+ "<title>Error 404</title>\n"
-	       				+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
-	       				+ " \n"
-	       				+ "</head>\n"
-	       				+ "<body background=\"images/errorPagina.png\">\n"
-	       				+ "      <a href=\"Login.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
-	       				+ "            <hr>\n"
-	       				+ "            <div id=\"izq\">\n"
-	       				+ "                \n"
-	       				+ "                <img src=\"images/error.png\" id=\"iconoError\">\n"
-	       				+ "            </div>\n"
-	       				+ "            <div id=\"der\">\n"
-	       				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
-	       				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido encontrar<br> la página que buscas.</FONT></h3>\n"
-	       				+ "                <h7 id=\"codError\">Codigo de error: 404</h7>\n"
-	       				+ "            </div>\n"
-	       				+ "</body>\n"
-	       				+ "</html>\n"
-	       				+ "</html>");
+	       		response.getWriter().append(paginaError());
 	  	 	}
 		 }
 		
+	}
+
+	private String paginaError() {
+		return "<!DOCTYPE html>\n"
+				+ "<html>\n"
+				+ "<head>\n"
+				+ "<meta charset=\"ISO-8859-1\">\n"
+				+ "<title>Error 404</title>\n"
+				+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
+				+ " \n"
+				+ "</head>\n"
+				+ "<body background=\"images/errorPagina.png\">\n"
+				+ "      <a href=\"Login.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
+				+ "            <hr>\n"
+				+ "            <div id=\"izq\">\n"
+				+ "                \n"
+				+ "                <img src=\"images/error.png\" id=\"iconoError\">\n"
+				+ "            </div>\n"
+				+ "            <div id=\"der\">\n"
+				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
+				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido encontrar<br> la página que buscas.</FONT></h3>\n"
+				+ "                <h7 id=\"codError\">Codigo de error: 404</h7>\n"
+				+ "            </div>\n"
+				+ "</body>\n"
+				+ "</html>\n"
+				+ "</html>";
 	}
 
 	/**
