@@ -33,16 +33,27 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String usuario = request.getParameter("user");
-	   	String password = request.getParameter("password");
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		String usuario = (String) session.getAttribute("usuario");
+	   	String password = (String) session.getAttribute("password");
 	            	
-	    
-	    
-	    if(usuario !=null && password !=null){
+	    if(usuario==null && password==null) {
+	    	usuario= request.getParameter("user");
+	    	password = request.getParameter("password");
+	    }
 	    	if(UtilUsers.userIsValid(usuario, password)){
-	    		HttpSession userSession = request.getSession();
-	    		userSession.setAttribute("login", "True");
-	    		userSession.setAttribute("usuario", usuario);
+
+	    		session.setAttribute("login", "True");
+	    		session.setAttribute("usuario", usuario);
+	    		session.setAttribute("password", password);
 	         	
 	         	response.getWriter().append("<!DOCTYPE html>"
 	    				+ "<html>"
@@ -89,7 +100,9 @@ public class Index extends HttpServlet {
 	    					+ "</tr>"); 
 	    					}
 	    	
-	    				response.getWriter().append( "</table>"
+	    				response.getWriter().append( "<input type='hidden' name='user' value='"+usuario+"'>"
+	    				+ "<input type='hidden' name='user' value='"+password+"'>"
+	    				+ "</table>"
 	    				+ "</div>"
 	    				+ "</body>"
 	    				+ "</head>"
@@ -99,7 +112,7 @@ public class Index extends HttpServlet {
 	    	} else { 
 	       		response.getWriter().append(paginaError());
 	  	 	}
-		 }
+		 
 		
 	}
 
@@ -127,14 +140,6 @@ public class Index extends HttpServlet {
 				+ "</body>\n"
 				+ "</html>\n"
 				+ "</html>";
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

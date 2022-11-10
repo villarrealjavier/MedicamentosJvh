@@ -28,51 +28,43 @@ public class Category {
 		this.idCat = id;
 		this.name = name;
 		this.description = description;
+		listMedicine=null;
 	}
 
-
-
-	protected String getId() {
+	public String getIdCat() {
 		return idCat;
 	}
 
-
-
-	protected void setId(String id) {
-		this.idCat = id;
+	public void setIdCat(String idCat) {
+		this.idCat = idCat;
 	}
 
-
-
-	protected String getName() {
+	public String getName() {
 		return name;
 	}
 
-
-
-	protected void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-
-
-	protected String getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
-
-
-	protected void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	protected List<Medicine> getListMedicine() {
+	public List<Medicine> getListMedicine() {
 		return listMedicine;
 	}
 
-	protected void setListMedicine(List<Medicine> listMedicine) {
+	public void setListMedicine(List<Medicine> listMedicine) {
 		this.listMedicine = listMedicine;
 	}
+
+
+
 	
 	
 	
