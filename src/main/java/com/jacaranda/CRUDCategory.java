@@ -19,4 +19,9 @@ public class CRUDCategory {
 		   }
 			return listaFinal;
 		}
+	public static Category getCategory(Integer id ) {
+		Session session = Conn.getSession();
+		Category Category = (Category) session.get(Category.class,id);
+		return Category;
+	}
 }

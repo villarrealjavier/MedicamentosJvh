@@ -21,7 +21,7 @@
     	
 </div>
 	<div id="addElement">
-	<form action="addProductMethod.jsp" method="Post">
+	<form action="AddMedicineMethod" method="Post">
 	<fieldset style="width:400px">
 	<legend><h1>Add Product</h1></legend>
 		<label><b>Name:</b></label><br>
@@ -32,18 +32,19 @@
 		<label><b>Price</b></label><br>
 		<input type="number" step="any" name="priceProduct" required><br><br>
 		<label><b>Image</b></label><br>
-		<input type="file" name="fileProduct" required><br><br>
+		<input type="file" name="fileProduct" ><br><br>
 		<label><b>Category:</b></label><br>
-		<select name="cat">
+		<select name="category">
 		<%
 		List<Category> listcategory = CRUDCategory.getCategoriasNoRepetidas();
 		Iterator<Category> iterador = listcategory.iterator();
 		while (iterador.hasNext()){
 			Category cat = iterador.next();%>
-			<option><%= cat.getName()%></option>
+			<option value="<%=cat.getIdCat()%>"><%=cat.getName() %></option>
 		<%}
 		%>	
-		</select><br>
+		</select>
+		<br>
 		<br>
 		<input type="submit" id="button" name="send" value="Send">
 		</fieldset>

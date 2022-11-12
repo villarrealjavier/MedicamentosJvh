@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 public class Category {
 	@Id
 	@Column(name="id")
-	private String idCat;
+	private Integer idCat;
 	private String name;
 	private String description;
 	
@@ -23,7 +23,7 @@ public class Category {
 		
 	}
 	
-	public Category(String id, String name, String description) {
+	public Category(Integer id, String name, String description) {
 		super();
 		this.idCat = id;
 		this.name = name;
@@ -31,11 +31,11 @@ public class Category {
 		listMedicine=null;
 	}
 
-	public String getIdCat() {
+	public Integer getIdCat() {
 		return idCat;
 	}
 
-	public void setIdCat(String idCat) {
+	public void setIdCat(Integer idCat) {
 		this.idCat = idCat;
 	}
 

@@ -23,6 +23,24 @@ public class CRUDMedicine {
 //		ArrayList<Medicine> listMedicines = (ArrayList<Medicine>) query.getResultList();
 //		return listMedicines;          
 //	}
+	public static boolean saveMedicine(Medicine m) {
+		boolean resultado=false;
+		Session session = Conn.getSession();
+		
+		try {
+			
+			session.getTransaction().begin();
+			session.saveOrUpdate(m);
+			session.getTransaction().commit();
+			
+			
+			resultado=true;			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resultado;
+	}
 	
 	public static List<Medicine> getMedicines() {
 	   Session session= Conn.getSession();
@@ -30,4 +48,10 @@ public class CRUDMedicine {
 	   ArrayList<Medicine> listMedicina = (ArrayList<Medicine>) query.getResultList();
 		return listMedicina;
 	}
+	public static List<Integer> getIdMax() {
+		   Session session= Conn.getSession();
+		   Query<Integer> query = session.createQuery("SELECT MAX(id) FROM com.jacaranda.Medicine p ");
+		   ArrayList<Integer> listMedicina = (ArrayList<Integer>) query.getResultList();
+			return listMedicina;
+		}
 }

@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Medicine {
 	@Id
-	private String id;
+	private Integer id;
 	private String name;
 	private String description;
 	private Double price;
@@ -24,7 +24,7 @@ public class Medicine {
 		
 	}
 	
-	public Medicine(String id, String name, String description, Double price,Category category) {
+	public Medicine(Integer id, String name, String description, Double price,Category category) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -32,12 +32,19 @@ public class Medicine {
 		this.price = price;
 		this.category=category;
 	}
+	public Medicine( String name, String description, Double price,Category category) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.category=category;
+	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
