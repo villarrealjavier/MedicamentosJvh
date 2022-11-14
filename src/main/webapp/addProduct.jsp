@@ -12,6 +12,16 @@
 <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
+<%
+ 	 String isSession = (String) session.getAttribute("login");
+	String userSession = (String) session.getAttribute("usuario");
+	
+	if(isSession == null && userSession == null){
+		response.sendRedirect("error.jsp?msg=No tienes permisos, haz login.");
+	} 
+	 
+	
+%>
 
 <div id="header">
 	<form action="Index" method="post">

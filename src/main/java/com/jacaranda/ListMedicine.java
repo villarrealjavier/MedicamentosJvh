@@ -16,14 +16,14 @@ import org.hibernate.Session;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/Index")
-public class Index extends HttpServlet {
+@WebServlet("/ListMedicine")
+public class ListMedicine extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Index() {
+    public ListMedicine() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,7 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doPost(request, response);
+		response.getWriter().append(paginaError());
 	}
 
 	/**
@@ -44,10 +44,16 @@ public class Index extends HttpServlet {
 		HttpSession session = request.getSession();
 		String usuario = (String) session.getAttribute("usuario");
 	   	String password = (String) session.getAttribute("password");
-	            	
+	     
+	   	//COMPROBAMOS SI ES NULO E INTENTAMOS RECOGER LOS VALORES DE LA SESION PARA SEGUIR NAVEGANDO
 	    if(usuario==null && password==null) {
 	    	usuario= request.getParameter("user");
 	    	password = request.getParameter("password");
+	    	//COMPROBAMOS POR SEGUNDA VEZ DEBIDO A QUE SI NO SE PUEDE RECOGER LOS VALORES DE LA SESION 
+	    	//DEBEREMOS MANDARLO A LA PAGINA DE ERROR
+	    	if(usuario==null && password==null) {
+	    		response.getWriter().append(paginaError());
+	    	}
 	    }
 	    	if(UtilUsers.userIsValid(usuario, password)){
 
@@ -65,12 +71,13 @@ public class Index extends HttpServlet {
 	    				+ "<link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>"
 	    				+ "</head>"
 	    				+ "<body background='posibleFondo.png'>"
-	    				+ "<div>");
+	    				+  "<a href='#'><img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'></a>"
+	    				+ "<div align='right'>"
+	    				+ "<a href='Index.jsp'><input type='button' name='close' id='add' value='Close session' align='right'></a>"
+			         	);
 	         	if(UtilUsers.userAdminIAdmin(usuario, password)) {
-	         		response.getWriter().append("<div>"
-	         				+  "<a href='#'><img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'></a>"
-	         				+ "<br>"
-	         				+ "<a href='addProduct.jsp'><input type='button' name='add' id='add' value='Add Products' align='right'></a>"
+	         		response.getWriter().append(
+	         				 "<a href='addProduct.jsp'><input type='button' name='add' id='add' value='Add Products' align='right'></a>"
 	         				
 	         				+ "<br>"
 	         				+ "</div>"
@@ -126,7 +133,7 @@ public class Index extends HttpServlet {
 				+ " \n"
 				+ "</head>\n"
 				+ "<body background=\"images/errorPagina.png\">\n"
-				+ "      <a href=\"Login.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
+				+ "      <a href=\"Index.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
 				+ "            <hr>\n"
 				+ "            <div id=\"izq\">\n"
 				+ "                \n"
@@ -134,7 +141,7 @@ public class Index extends HttpServlet {
 				+ "            </div>\n"
 				+ "            <div id=\"der\">\n"
 				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
-				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido encontrar<br> la página que buscas.</FONT></h3>\n"
+				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">Ha ocurrido un error al buscar la pagina<br> Pulse en el icono para ir al login.</FONT></h3>\n"
 				+ "                <h7 id=\"codError\">Codigo de error: 404</h7>\n"
 				+ "            </div>\n"
 				+ "</body>\n"

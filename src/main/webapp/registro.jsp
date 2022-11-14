@@ -10,7 +10,7 @@
 <body>
 <body background="images/fondo.png">
 	<div id="container">
-    	<a href="Login.jsp"><img src="images/iconoSinFondo.png" width="200px" height="150px" id="logo"></a>
+    	<a href="Index.jsp"><img src="images/iconoSinFondo.png" width="200px" height="150px" id="logo"></a>
     	
     	<div id="registro">
     	</div>

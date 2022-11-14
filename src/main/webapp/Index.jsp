@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+<%session.invalidate(); %>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -25,7 +26,7 @@
                      
         <div id="centroLogin">
      
-        	<form action="Index"  method="post">
+        	<form action="ListMedicine"  method="post">
             	<h1 id="titulo">Bienvenido</h1>
 				<%
 				//Se comprueba si existe la variable error que vendría true del checkLogin si algun campo fuese incorrecto
