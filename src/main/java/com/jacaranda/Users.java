@@ -1,6 +1,7 @@
 package com.jacaranda;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,14 +14,14 @@ public class Users {
 	private int admin;
 	private String name;
 	private String surname;
-	private LocalDate birthday;
+	private LocalDateTime birthday;
 	private String gender;
 
 //CONSTRUCTOR
 public Users() {
 	
 }
-public Users(String user, String pass, int admin, String namePerson, String surname, LocalDate fecha,
+public Users(String user, String pass, int admin, String namePerson, String surname, LocalDateTime fecha,
 		String genero) {
 	super();
 	this.user = user;
@@ -63,10 +64,10 @@ public String getSurname() {
 public void setSurname(String surname) {
 	this.surname = surname;
 }
-public LocalDate getFecha() {
+public LocalDateTime getFecha() {
 	return birthday;
 }
-public void setFecha(LocalDate fecha) {
+public void setFecha(LocalDateTime fecha) {
 	this.birthday = fecha;
 }
 public String getGenero() {

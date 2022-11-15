@@ -184,7 +184,7 @@ INSERT INTO `Medicine` (`id`, `name`, `description`, `price`, `Category`) VALUES
 
 CREATE TABLE `Users` (
   `user` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `password` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(32) CHARACTER SET utf8 NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `surname` varchar(50) CHARACTER SET utf8 NOT NULL,
   `birthday` date NOT NULL,

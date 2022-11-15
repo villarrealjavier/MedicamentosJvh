@@ -2,6 +2,8 @@ package com.jacaranda;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +30,7 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		response.getWriter().append(paginaError());
 	}
 
 	/**
@@ -40,44 +42,67 @@ public class Register extends HttpServlet {
 		String pass = String.valueOf(request.getParameter("passwordR"));
 		String first= String.valueOf(request.getParameter("first"));
 		String last= String.valueOf(request.getParameter("last"));
-		LocalDate birthday= LocalDate.parse(String.valueOf(request.getParameter("birth")));
+		LocalDateTime birthday=null;
+		try {
+			birthday= LocalDateTime.of(LocalDate.parse(request.getParameter("birth")),LocalTime.now());
+			
+		}catch (Exception e) {
+			response.getWriter().append(paginaError());
+		}
+		
+			
+		
 		String gender = String.valueOf(request.getParameter("gender"));
 		int admin = Integer.valueOf(request.getParameter("admin"));
+		//---------------------------------------------------------------
+		
 		
 		String passEncript = EncriptarMD5.getMD5(pass);
 		
 		Users u = new Users(user,passEncript,admin,first,last,birthday,gender);
 		
-		if(UtilUsers.getUser(u.getUser())==null) {
-			CRUDUser.saveUser(u);
-			response.sendRedirect("Index.jsp");
+		if(user!=null && pass!=null && first!=null && last!=null && birthday!=null && gender!=null) {
+			if(UtilUsers.getUser(u.getUser())==null && pass.length()>=6) {
+				user.trim();
+				pass.trim();
+				first.trim();
+				last.trim();
+				gender.trim();
+				CRUDUser.saveUser(u);
+				response.sendRedirect("Index.jsp");
+				
+			}else {
 			
-		}else {
-			response.getWriter().append("<!DOCTYPE html>\n"
-					+ "<html>\n"
-					+ "<head>\n"
-					+ "<meta charset=\"ISO-8859-1\">\n"
-					+ "<title>Error 404</title>\n"
-					+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
-					+ " \n"
-					+ "</head>\n"
-					+ "<body background=\"images/errorPagina.png\">\n"
-					+ "      <a href=\"Index.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
-					+ "            <hr>\n"
-					+ "            <div id=\"izq\">\n"
-					+ "                \n"
-					+ "                <img src=\"images/error.png\" id=\"iconoError\">\n"
-					+ "            </div>\n"
-					+ "            <div id=\"der\">\n"
-					+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
-					+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido encontrar<br> la página que buscas.</FONT></h3>\n"
-					+ "                <h7 id=\"codError\">Codigo de error: 404</h7>\n"
-					+ "            </div>\n"
-					+ "</body>\n"
-					+ "</html>\n"
-					+ "</html>");
+		}
+			response.getWriter().append(paginaError());
 		}
 		
+	}
+	
+	public String paginaError() {
+		return "<!DOCTYPE html>\n"
+				+ "<html>\n"
+				+ "<head>\n"
+				+ "<meta charset=\"ISO-8859-1\">\n"
+				+ "<title>Error 404</title>\n"
+				+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
+				+ " \n"
+				+ "</head>\n"
+				+ "<body background=\"images/errorPagina.png\">\n"
+				+ "      <a href=\"Index.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
+				+ "            <hr>\n"
+				+ "            <div id=\"izq\">\n"
+				+ "                \n"
+				+ "                <img src=\"images/error.png\" id=\"iconoError\">\n"
+				+ "            </div>\n"
+				+ "            <div id=\"der\">\n"
+				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
+				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hemos podido acceder al registro<br></FONT></h3>\n"
+				+ "                <h7 id=\"codError\">Codigo de error: 303</h7>\n"
+				+ "            </div>\n"
+				+ "</body>\n"
+				+ "</html>\n"
+				+ "</html>";
 	}
 	
 

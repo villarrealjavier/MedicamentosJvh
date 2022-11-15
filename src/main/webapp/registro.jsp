@@ -8,6 +8,17 @@
  <link rel="stylesheet" type="text/css" href="css/mvp.css">
 </head>
 <body>
+<%
+ 	 String isSession = (String) session.getAttribute("login");
+	String userSession = (String) session.getAttribute("usuario");
+	
+	if(isSession == null && userSession == null){
+		response.sendRedirect("error.jsp?msg=No tienes permisos, haz login.");
+	} 
+	 
+	
+%>
+
 <body background="images/fondo.png">
 	<div id="container">
     	<a href="Index.jsp"><img src="images/iconoSinFondo.png" width="200px" height="150px" id="logo"></a>
@@ -25,7 +36,7 @@
 	            <input type="text" required name="username" id="username" required> 
 	            
  				<label>Password:</label>
-	            <input type="password" required name="passwordR" id="passwordR" required> 
+	            <input type="password" required name="passwordR" id="passwordR" minlength="6" required> 
 	            
 	            <label>Fist Name:</label>
 	            <input type="text" required name="first" id="first" required>
