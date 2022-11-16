@@ -7,17 +7,9 @@
 <title>Registro</title>
  <link rel="stylesheet" type="text/css" href="css/mvp.css">
 </head>
-<body>
-<%
- 	 String isSession = (String) session.getAttribute("login");
-	String userSession = (String) session.getAttribute("usuario");
-	
-	if(isSession == null && userSession == null){
-		response.sendRedirect("error.jsp?msg=No tienes permisos, haz login.");
-	} 
-	 
-	
-%>
+
+
+
 
 <body background="images/fondo.png">
 	<div id="container">

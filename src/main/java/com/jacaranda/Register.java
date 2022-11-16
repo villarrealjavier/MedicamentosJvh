@@ -42,9 +42,9 @@ public class Register extends HttpServlet {
 		String pass = String.valueOf(request.getParameter("passwordR"));
 		String first= String.valueOf(request.getParameter("first"));
 		String last= String.valueOf(request.getParameter("last"));
-		LocalDateTime birthday=null;
+		LocalDate birthday=null;
 		try {
-			birthday= LocalDateTime.of(LocalDate.parse(request.getParameter("birth")),LocalTime.now());
+			birthday= LocalDate.parse(request.getParameter("birth"));
 			
 		}catch (Exception e) {
 			response.getWriter().append(paginaError());
@@ -61,7 +61,9 @@ public class Register extends HttpServlet {
 		
 		Users u = new Users(user,passEncript,admin,first,last,birthday,gender);
 		
-		if(user!=null && pass!=null && first!=null && last!=null && birthday!=null && gender!=null) {
+		if((user!=null || !user.isEmpty()) && (pass!=null || !pass.isEmpty()) 
+				&& (first!=null || !first.isEmpty()) && (last!=null || !last.isEmpty())
+				&& (birthday!=null) && (gender!=null || !gender.isEmpty())) {
 			if(UtilUsers.getUser(u.getUser())==null && pass.length()>=6) {
 				user.trim();
 				pass.trim();

@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "29a3f751-b55b-4350-817a-9bc2dbd8f63a",
+		"name": "MedicamentosJvh",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ListMedicine mediante Login",
+			"item": [
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							]
+						},
+						"description": "Acceso a ListMedicine por GET"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							]
+						},
+						"description": "Acceso por POST a ListMedicine sin usuario ni contraseña"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine?user&password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine?user&password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						},
+						"description": "Acceso por POST a ListMedicine con usuario y contraseña vacios"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=null&password=null",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=null&password=null",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "null"
+								},
+								{
+									"key": "password",
+									"value": "null"
+								}
+							]
+						},
+						"description": "Acceso por POST a ListMedicine con usuario y contraseña nulas"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=inma&password=inma",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=inma&password=inma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "inma"
+								},
+								{
+									"key": "password",
+									"value": "inma"
+								}
+							]
+						},
+						"description": "Acceso con usuario admin a ListMedicine mediante POST"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=inma&password=inma",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=inma&password=inma",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "inma"
+								},
+								{
+									"key": "password",
+									"value": "inma"
+								}
+							]
+						},
+						"description": "Acceso mediante GET a ListMedicine con usuario admin\n"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=null&password=null",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/ListMedicine?user=null&password=null",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"ListMedicine"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "null"
+								},
+								{
+									"key": "password",
+									"value": "null"
+								}
+							]
+						},
+						"description": "Acceso a ListMedicine por GET con usuario y contraseña nulos"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registro",
+			"item": [
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/Register?username&passwordR&first&last&birth&gender",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/Register?username&passwordR&first&last&birth&gender",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"Register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": null
+								},
+								{
+									"key": "passwordR",
+									"value": null
+								},
+								{
+									"key": "first",
+									"value": null
+								},
+								{
+									"key": "last",
+									"value": null
+								},
+								{
+									"key": "birth",
+									"value": null
+								},
+								{
+									"key": "gender",
+									"value": null
+								}
+							]
+						},
+						"description": "Registro con todos los campos vacios mediante GET"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/Register?username&passwordR&first&last&birth&gender",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/Register?username&passwordR&first&last&birth&gender",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"Register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": null
+								},
+								{
+									"key": "passwordR",
+									"value": null
+								},
+								{
+									"key": "first",
+									"value": null
+								},
+								{
+									"key": "last",
+									"value": null
+								},
+								{
+									"key": "birth",
+									"value": null
+								},
+								{
+									"key": "gender",
+									"value": null
+								}
+							]
+						},
+						"description": "Registro con todos los campos vacios mediante POST"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/MedicamentosJvh/Register?username=jose&passwordR=jose&first=jose&last=jose&birth=2022-11-03&gender=H&admin=0",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/MedicamentosJvh/Register?username=jose&passwordR=jose&first=jose&last=jose&birth=2022-11-03&gender=H&admin=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"MedicamentosJvh",
+								"Register"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "jose"
+								},
+								{
+									"key": "passwordR",
+									"value": "jose"
+								},
+								{
+									"key": "first",
+									"value": "jose"
+								},
+								{
+									"key": "last",
+									"value": "jose"
+								},
+								{
+									"key": "birth",
+									"value": "2022-11-03"
+								},
+								{
+									"key": "gender",
+									"value": "H"
+								},
+								{
+									"key": "admin",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Regsitro con usuario mediante POST y contraseña menor que 6."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

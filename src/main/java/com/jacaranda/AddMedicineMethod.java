@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AddMedicineMethod
@@ -39,20 +40,57 @@ public class AddMedicineMethod extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ServletContext context = this.getServletContext();
-		RequestDispatcher dispacher = context.getRequestDispatcher("/ListMedicine");
-		List<Integer> listId = CRUDMedicine.getIdMax();
-		Integer id = listId.get(0);
-		String name = String.valueOf(request.getParameter("nameProduct"));
-		String description = String.valueOf(request.getParameter("descriptionProduct"));
-		Double price = Double.valueOf(request.getParameter("priceProduct"));
-		Integer category = Integer.valueOf(request.getParameter("category"));
-		Category cat = CRUDCategory.getCategory(category);
+		HttpSession session = request.getSession();
+		String usuario = (String) session.getAttribute("usuario");
+	  	String password = (String) session.getAttribute("password");
+	  	 if(usuario==null && password==null) {
+	  		response.getWriter().append(paginaError());
+	  	 }else {
+	  		 ServletContext context = this.getServletContext();
+	  		 RequestDispatcher dispacher = context.getRequestDispatcher("/ListMedicine");
+	  		 List<Integer> listId = CRUDMedicine.getIdMax();
+	  		 Integer id = listId.get(0);
+	  		 String name = String.valueOf(request.getParameter("nameProduct"));
+	  		 String description = String.valueOf(request.getParameter("descriptionProduct"));
+	  		 Double price = Double.valueOf(request.getParameter("priceProduct"));
+	  		 Integer category = Integer.valueOf(request.getParameter("category"));
+	  		 Category cat = CRUDCategory.getCategory(category);
+	  		 
+	  		 if (CRUDMedicine.getMedicineName(name).isEmpty()){
+	  			 Medicine m = new Medicine(id+1,name,description, price, cat);
+	  			 CRUDMedicine.saveMedicine(m);	
+	  			 dispacher.forward(request, response);
+	  		 }else {
+	  			 response.getWriter().append("<!DOCTYPE html>\n"
+	  					 + "<html>\n"
+	  					 + "<head>\n"
+	  					 + "<meta charset=\"ISO-8859-1\">\n"
+	  					 + "<title>Error 404</title>\n"
+	  					 + "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
+	  					 + " \n"
+	  					 + "</head>\n"
+	  					 + "<body background=\"images/errorPagina.png\">\n"
+	  					 + "<form action='ListMedicine' method='Post'>"
+	  					 + "      <button><img src=\"images/iconoSinFondo.png\" width=\"150px\" height=\"100px\" id=\"logo\"></button> \n"
+	  					 + "            <hr>\n"
+	  					 + "            <div id=\"izq\">\n"
+	  					 + "                \n"
+	  					 + "                <img src=\"images/error.png\" id=\"iconoError\">\n"
+	  					 + "            </div>\n"
+	  					 + "            <div id=\"der\">\n"
+	  					 + "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya no se puede añadir!</FONT></h1>\n"
+	  					 + "                <h3 id=\"TextoChico\"><FONT color=\"black\">Ha ocurrido un error al añadir la medicina <br> Pulse en el icono para ir al login.</FONT></h3>\n"
+	  					 + "                <h7 id=\"codError\">Codigo de error: 404 (Ese nombre ya existe)</h7>\n"
+	  					 + "            </div>\n"
+	  					 + "</body>\n"
+	  					 + "</form>"
+	  					 + "</html>\n"
+	  					 + "</html>");
+	  		 }
+	  		 
+	  		 
+	  	 }
 		
-		Medicine m = new Medicine(id+1,name,description, price, cat);
-		CRUDMedicine.saveMedicine(m);
-		
-		dispacher.forward(request, response);
 		
  				
 	}
@@ -67,7 +105,7 @@ public class AddMedicineMethod extends HttpServlet {
 				+ " \n"
 				+ "</head>\n"
 				+ "<body background=\"images/errorPagina.png\">\n"
-				+ "      <a href=\"Index.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
+				+ "      <a href=\"ListMedicine?\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
 				+ "            <hr>\n"
 				+ "            <div id=\"izq\">\n"
 				+ "                \n"
@@ -75,8 +113,8 @@ public class AddMedicineMethod extends HttpServlet {
 				+ "            </div>\n"
 				+ "            <div id=\"der\">\n"
 				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
-				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">Ha ocurrido un error, tu no tienes acceso <br> Pulse en el icono para ir al login.</FONT></h3>\n"
-				+ "                <h7 id=\"codError\">Codigo de error: 404</h7>\n"
+				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">Ha ocurrido un error no puedes acceder aqui <br> Pulse en el icono para ir al login.</FONT></h3>\n"
+				+ "                <h7 id=\"codError\">Codigo de error: 303 </h7>\n"
 				+ "            </div>\n"
 				+ "</body>\n"
 				+ "</html>\n"

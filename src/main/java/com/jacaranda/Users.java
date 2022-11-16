@@ -14,14 +14,14 @@ public class Users {
 	private int admin;
 	private String name;
 	private String surname;
-	private LocalDateTime birthday;
+	private LocalDate birthday;
 	private String gender;
 
 //CONSTRUCTOR
 public Users() {
 	
 }
-public Users(String user, String pass, int admin, String namePerson, String surname, LocalDateTime fecha,
+public Users(String user, String pass, int admin, String namePerson, String surname, LocalDate fecha,
 		String genero) {
 	super();
 	this.user = user;
@@ -64,10 +64,10 @@ public String getSurname() {
 public void setSurname(String surname) {
 	this.surname = surname;
 }
-public LocalDateTime getFecha() {
+public LocalDate getFecha() {
 	return birthday;
 }
-public void setFecha(LocalDateTime fecha) {
+public void setFecha(LocalDate fecha) {
 	this.birthday = fecha;
 }
 public String getGenero() {

@@ -42,13 +42,14 @@ public class ListMedicine extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		String usuario = (String) session.getAttribute("usuario");
-	   	String password = (String) session.getAttribute("password");
+		String usuario= request.getParameter("user");
+    	String password = request.getParameter("password");
+		
 	     
 	   	//COMPROBAMOS SI ES NULO E INTENTAMOS RECOGER LOS VALORES DE LA SESION PARA SEGUIR NAVEGANDO
 	    if(usuario==null && password==null) {
-	    	usuario= request.getParameter("user");
-	    	password = request.getParameter("password");
+	    	usuario = (String) session.getAttribute("usuario");
+	  	  password = (String) session.getAttribute("password");
 	    	//COMPROBAMOS POR SEGUNDA VEZ DEBIDO A QUE SI NO SE PUEDE RECOGER LOS VALORES DE LA SESION 
 	    	//DEBEREMOS MANDARLO A LA PAGINA DE ERROR
 	    	if(usuario==null && password==null) {
