@@ -24,7 +24,7 @@
 %>
 
 <div id="header">
-	<form action="Index" method="post">
+	<form action="ListMedicine" method="post">
 			<button><img src="images/iconoSinFondo.png" width="120px" height="80px" id="logo"></button>
 	</form>
 
@@ -37,8 +37,7 @@
 		<label><b>Name:</b></label><br>
 		<input type="text" name="nameProduct" required><br><br>
 		<label><b>Description</b></label><br>
-		<textarea name="descriptionProduct" cols="40" rows="5" required>
-		</textarea><br><br>
+		<textarea name="descriptionProduct"  cols="40" rows="5" required></textarea><br><br>
 		<label><b>Price</b></label><br>
 		<input type="number" step="any" name="priceProduct" required><br><br>
 		<label><b>Image</b></label><br>
