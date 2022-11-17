@@ -68,6 +68,8 @@ CREATE TABLE `Medicine` (
   `description` varchar(150) CHARACTER SET utf8 NOT NULL,
   `price` double NOT NULL,
   `Category` int(11) NOT NULL,
+  `img` longblob,
+  `stock` int(11) DEFAULT 50,
   
   CONSTRAINT pk_m PRIMARY KEY (id),
     CONSTRAINT fk_c FOREIGN KEY (Category) REFERENCES Category(id)
