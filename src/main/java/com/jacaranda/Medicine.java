@@ -1,12 +1,16 @@
 package com.jacaranda;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import com.mysql.cj.jdbc.Blob;
 
 @Entity
 public class Medicine {
@@ -18,6 +22,9 @@ public class Medicine {
 	@ManyToOne
 	@JoinColumn (name="category")
 	private Category category;
+	
+
+
 	
 	
 	public Medicine() {
@@ -31,6 +38,7 @@ public class Medicine {
 		this.description = description;
 		this.price = price;
 		this.category=category;
+		
 	}
 	public Medicine( String name, String description, Double price,Category category) {
 		super();

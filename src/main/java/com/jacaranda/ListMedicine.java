@@ -65,7 +65,7 @@ public class ListMedicine extends HttpServlet {
 	         	response.getWriter().append("<!DOCTYPE html>"
 	    				+ "<html>"
 	    				+ "<head>"
-	    				+ "<meta charset=\"UTF-8\">"
+	    				+ "<meta charset='UTF-8'>"
 	    				+ "<title>"
 	    				+ "Catalogo Medicinas"
 	    				+ "</title>"
@@ -92,10 +92,13 @@ public class ListMedicine extends HttpServlet {
 	    				+ "<th id='description'>Description: </th>"
 	    				+ "<th id='price'>Price: </th>"
 	    				+ "<th id='price'>Name Category: </th>"
+	    				+ "<th id='price'>Opciones: </th>"
 	    				+ "</tr>");
 	    				List<Medicine> lista = null;
 	    				lista = CRUDMedicine.getMedicines();
 	    				Iterator<Medicine> iterador = lista.iterator();
+	    				Carrito c = new Carrito();
+	    				session.setAttribute("Carrito", c);
 	    				while(iterador.hasNext()) {
 	    					 Medicine m = iterador.next();
 	    							 
@@ -105,6 +108,7 @@ public class ListMedicine extends HttpServlet {
 	    					+ "<td>" + m.getDescription() + "</td>"
 	    					+ "<td>" + m.getPrice() + "</td>"
 	    					+ "<td>" + m.getCategory().getName() + "</td>"
+	    					+ "<td><a href='shoppingCart.jsp?value='"+m.getName()+ "> <input type='submit' name='annadirCarrito' value='Add to Cart'> </td>"
 	    					+ "</tr>"); 
 	    					}
 	    	

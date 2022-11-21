@@ -2,9 +2,13 @@ package com.jacaranda;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity (name = "Users")
 public class Users {
@@ -16,6 +20,8 @@ public class Users {
 	private String surname;
 	private LocalDate birthday;
 	private String gender;
+	
+	
 
 //CONSTRUCTOR
 public Users() {

@@ -63,6 +63,7 @@ public class AddMedicineMethod extends HttpServlet {
 	  			 category = Integer.valueOf(request.getParameter("category"));
 	  			 cat = CRUDCategory.getCategory(category);
 	  			 
+	  			 
 	  			 if((name!=null && !name.isEmpty()) && (description!=null && !description.isEmpty())
 		  				 && (price!=null && !price.isNaN()) && (category!=null) && (cat!=null)) {
 		  			 if (CRUDMedicine.getMedicineName(name).isEmpty()){
