@@ -61,6 +61,12 @@ public class ListMedicine extends HttpServlet {
 	    		session.setAttribute("login", "True");
 	    		session.setAttribute("usuario", usuario);
 	    		session.setAttribute("password", password);
+	    		Carrito c = (Carrito) session.getAttribute("carrito");
+				if (c==null) {
+					c = new Carrito();
+					session.setAttribute("carrito", c);
+					
+				}
 	         	
 	         	response.getWriter().append("<!DOCTYPE html>"
 	    				+ "<html>"
@@ -74,8 +80,9 @@ public class ListMedicine extends HttpServlet {
 	    				+ "<body background='posibleFondo.png'>"
 	    				+  "<a href='#'><img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'></a>"
 	    				+ "<div align='right'>"
-	    				+ "<a href='Index.jsp'><input type='button' name='close' id='add' value='Close session' align='right'></a>"
-			         	);
+	    				+ "<a href='Index.jsp'><input type='button' name='close' id='add' value='Close session' align='right'></a> -----"
+	    				+ "<button> <img src='images/carro.png' width='30px' height='30px'>: <b>"+ c.getListShopping().size() +"  </b></button> ------  ");
+			         	
 	         	if(UtilUsers.userAdminIAdmin(usuario, password)) {
 	         		response.getWriter().append(
 	         				 "<a href='addProduct.jsp'><input type='button' name='add' id='add' value='Add Products' align='right'></a>"
@@ -97,8 +104,7 @@ public class ListMedicine extends HttpServlet {
 	    				List<Medicine> lista = null;
 	    				lista = CRUDMedicine.getMedicines();
 	    				Iterator<Medicine> iterador = lista.iterator();
-	    				Carrito c = new Carrito();
-	    				session.setAttribute("Carrito", c);
+	    				
 	    				while(iterador.hasNext()) {
 	    					 Medicine m = iterador.next();
 	    							 
@@ -107,11 +113,17 @@ public class ListMedicine extends HttpServlet {
 	    					+ "<td>" + m.getName()+ "</td>"
 	    					+ "<td>" + m.getDescription() + "</td>"
 	    					+ "<td>" + m.getPrice() + "</td>"
-	    					+ "<td>" + m.getCategory().getName() + "</td>"
-	    					+ "<td><a href='shoppingCart.jsp?value='"+m.getName()+ "> <input type='submit' name='annadirCarrito' value='Add to Cart'> </td>"
+	    					+ "<td>" + m.getCategory().getName() + "</td>");
+	    					if(!c.contieneMedicina(m)) {
+	    						response.getWriter().append( "<td> <form action='AddToCart' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart </form>"
+	    		    					+ "</tr>"); 
+	    					}else {
+	    						response.getWriter().append( "<td> <form action='#' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart </form>"
 	    					+ "</tr>"); 
 	    					}
-	    	
+	    					
+	    					}
+	    				
 	    				response.getWriter().append( "<input type='hidden' name='user' value='"+usuario+"'>"
 	    				+ "<input type='hidden' name='user' value='"+password+"'>"
 	    				+ "</table>"

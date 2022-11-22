@@ -77,6 +77,13 @@ public class CRUDMedicine {
 		   ArrayList<Medicine> listMedicina = (ArrayList<Medicine>) query.getResultList();
 			return listMedicina;
 		}
+	
+	public static List<Medicine> getMedicineId(Integer id) {
+		   Session session= Conn.getSession();
+		   Query<Medicine> query = session.createQuery("SELECT p FROM com.jacaranda.Medicine p WHERE id='" + id+ "'");
+		   ArrayList<Medicine> listMedicina = (ArrayList<Medicine>) query.getResultList();
+			return listMedicina;
+		}
 	public static List<Integer> getIdMax() {
 		   Session session= Conn.getSession();
 		   Query<Integer> query = session.createQuery("SELECT MAX(id) FROM com.jacaranda.Medicine p ");

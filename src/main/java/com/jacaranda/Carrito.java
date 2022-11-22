@@ -8,24 +8,40 @@ import java.util.List;
 public class Carrito {
 
 
-	private List<Item> listShopping = new ArrayList<>();
+	private List<Item> listShopping;
 	private LocalDateTime date_purchase;
 	
 	public void addItem(Item item) {
+		boolean contiene=false;
 		if(item!=null) {
-			if(listShopping.indexOf(item)== -1) {
+			for (Item c : listShopping) {
+				if(c.getMedicine().equals(item.getMedicine())) {
+					c.setQuantity(c.getQuantity()+1);
+					c.setPrice(c.getPrice()+item.getPrice());
+					contiene=true;
+					
+				}
+			}
+			if(contiene==false) {
 				listShopping.add(item);
-				item.setQuantity(1);
-				
-			}else {
-				item.setQuantity(item.getQuantity()+1);
 			}
 		}
+	}
+	
+	public boolean contieneMedicina(Medicine item) {
+		boolean contiene=false;
+		for (Item c : listShopping) {
+			if(c.getMedicine().equals(item)) {
+				contiene=true;
+				
+			}
+		}
+		return contiene;
 	}
 
 	public Carrito() {
 		super();
-		this.listShopping = null;
+		this.listShopping = new ArrayList<>();
 		this.date_purchase=LocalDateTime.now();
 		
 	}
