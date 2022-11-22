@@ -81,7 +81,7 @@ public class ListMedicine extends HttpServlet {
 	    				+  "<a href='#'><img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'></a>"
 	    				+ "<div align='right'>"
 	    				+ "<a href='Index.jsp'><input type='button' name='close' id='add' value='Close session' align='right'></a> -----"
-	    				+ "<button> <img src='images/carro.png' width='30px' height='30px'>: <b>"+ c.getListShopping().size() +"  </b></button> ------  ");
+	    				+ "<a href='Carrito.jsp'><button> <img src='images/carro.png' width='30px' height='30px'>: <b>"+ c.getListShopping().size() +"  </b></button></a> ------  ");
 			         	
 	         	if(UtilUsers.userAdminIAdmin(usuario, password)) {
 	         		response.getWriter().append(
