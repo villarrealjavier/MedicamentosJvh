@@ -118,7 +118,7 @@ public class ListMedicine extends HttpServlet {
 	    						response.getWriter().append( "<td> <form action='AddToCart' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart </form>"
 	    		    					+ "</tr>"); 
 	    					}else {
-	    						response.getWriter().append( "<td> <form action='#' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart </form>"
+	    						response.getWriter().append( "<td> <button type='submit' name='annadirCarro'> Added"
 	    					+ "</tr>"); 
 	    					}
 	    					
