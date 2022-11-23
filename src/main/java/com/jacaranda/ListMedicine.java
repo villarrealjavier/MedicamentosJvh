@@ -44,6 +44,7 @@ public class ListMedicine extends HttpServlet {
 		HttpSession session = request.getSession();
 		String usuario= request.getParameter("user");
     	String password = request.getParameter("password");
+    	
 		
 	     
 	   	//COMPROBAMOS SI ES NULO E INTENTAMOS RECOGER LOS VALORES DE LA SESION PARA SEGUIR NAVEGANDO
@@ -100,6 +101,7 @@ public class ListMedicine extends HttpServlet {
 	    				+ "<th id='price'>Price: </th>"
 	    				+ "<th id='price'>Name Category: </th>"
 	    				+ "<th id='price'>Opciones: </th>"
+	    				+ "<th id='price'>Cantidad: </th>"
 	    				+ "</tr>");
 	    				List<Medicine> lista = null;
 	    				lista = CRUDMedicine.getMedicines();
@@ -115,12 +117,14 @@ public class ListMedicine extends HttpServlet {
 	    					+ "<td>" + m.getPrice() + "</td>"
 	    					+ "<td>" + m.getCategory().getName() + "</td>");
 	    					if(!c.contieneMedicina(m)) {
-	    						response.getWriter().append( "<td> <form action='AddToCart' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart </form>"
-	    		    					+ "</tr>"); 
+	    						response.getWriter().append( "<td> <form action='AddToCart' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart "
+	    		    					);
+	    						
 	    					}else {
 	    						response.getWriter().append( "<td> <button type='submit' name='annadirCarro'> Added"
-	    					+ "</tr>"); 
+	    					); 
 	    					}
+	    					response.getWriter().append("<td> <input type='number' class='cant' name='cant' min=1 max=50 value=1></td><tr></form>");
 	    					
 	    					}
 	    				

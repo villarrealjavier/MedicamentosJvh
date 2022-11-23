@@ -11,7 +11,7 @@ public class Item {
 		super();
 		this.quantity = quantity;
 		this.medicine = medicine;
-		this.price = price;
+		this.price = price*quantity;
 	}
 
 

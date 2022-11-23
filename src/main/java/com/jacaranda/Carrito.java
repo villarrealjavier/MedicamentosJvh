@@ -16,16 +16,21 @@ public class Carrito {
 		if(item!=null) {
 			for (Item c : listShopping) {
 				if(c.getMedicine().equals(item.getMedicine())) {
-					c.setQuantity(c.getQuantity()+1);
-					c.setPrice(c.getPrice()+item.getPrice());
+					c.setPrice(c.getPrice()*item.getQuantity());
 					contiene=true;
 					
 				}
 			}
 			if(contiene==false) {
+				
 				listShopping.add(item);
+				
+				
 			}
 		}
+	}
+	public void vaciarCarrito(List<Item> lista) {
+		lista.clear();
 	}
 	
 	public boolean contieneMedicina(Medicine item) {

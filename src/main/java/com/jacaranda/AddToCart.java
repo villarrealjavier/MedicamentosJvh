@@ -40,14 +40,14 @@ public class AddToCart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		ServletContext context = this.getServletContext();
- 		 RequestDispatcher dispacher = context.getRequestDispatcher("/ListMedicine");
+	
+ 		int cant = Integer.valueOf(request.getParameter("cant"));
 		Integer id = Integer.valueOf(request.getParameter("annadirCarro"));
 		Medicine m = CRUDMedicine.getMedicineId(id).get(0);
-		Item i = new Item(1, m,m.getPrice()); 
+		Item i = new Item(cant, m,m.getPrice()); 
 		Carrito c = (Carrito) session.getAttribute("carrito");
 		c.addItem(i);
-		 dispacher.forward(request, response);
+		response.sendRedirect("Carrito.jsp");
 	}
 
 }
