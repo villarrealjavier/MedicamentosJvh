@@ -1,4 +1,4 @@
-package com.jacaranda;
+package com.jacaranda.Servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -10,6 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.jacaranda.CRUDUser;
+import com.jacaranda.EncriptarMD5;
+import com.jacaranda.Users;
+import com.jacaranda.UtilUsers;
 
 /**
  * Servlet implementation class Register

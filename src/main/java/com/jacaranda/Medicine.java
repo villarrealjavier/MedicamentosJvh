@@ -80,11 +80,11 @@ public class Medicine {
 		this.price = price;
 	}
 
-	protected Category getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	protected void setCategory(Category category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 	

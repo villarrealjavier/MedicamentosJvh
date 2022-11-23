@@ -1,4 +1,4 @@
-package com.jacaranda;
+package com.jacaranda.Servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.jacaranda.CRUDCategory;
+import com.jacaranda.CRUDMedicine;
+import com.jacaranda.Category;
+import com.jacaranda.Medicine;
 
 /**
  * Servlet implementation class AddMedicineMethod

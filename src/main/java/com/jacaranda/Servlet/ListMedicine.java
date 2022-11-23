@@ -1,4 +1,4 @@
-package com.jacaranda;
+package com.jacaranda.Servlet;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
+
+import com.jacaranda.CRUDMedicine;
+import com.jacaranda.Carrito;
+import com.jacaranda.Medicine;
+import com.jacaranda.UtilUsers;
+import com.jacaranda.Category;
 
 /**
  * Servlet implementation class Index
