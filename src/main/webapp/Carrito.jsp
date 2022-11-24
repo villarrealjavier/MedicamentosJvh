@@ -22,6 +22,7 @@
 </div>
 <div class="grid-container">
 <!-- <form action="" method="POST"> -->
+<form action="AddPurchase" method="POST">
 <%
 Carrito c=(Carrito) session.getAttribute("carrito");
 Iterator<Item> iterador = c.getListShopping().iterator();
@@ -38,7 +39,7 @@ while(iterador.hasNext()){%>
             </div>
             <div class="texto"><p align="center"><b>Nombre:</b> <%=it.getMedicine().getName() %><br>
             <b>Cantidad </b>
-            <input type="number" name="cant" min=1 max=50 default=1 value=<%=it.getQuantity()%>><br>
+            <input type="number" name="<%=it.getMedicine().getName() %>" id="cantidad" min=1 max=50 value=<%=it.getQuantity()%>><br>
 			<b>Precio Unidad:</b>
 			  <%=it.getMedicine().getPrice() %></p>
             <hr>
@@ -49,7 +50,7 @@ while(iterador.hasNext()){%>
         
  </div>
         <div class="botones">
-        <button type="submit" name="add" id='add'>Buy now</button>
+        <button type="submit" name="add" id='add'>Buy now</button></a></form>
         <a href="vaciarCarrito.jsp"><button type="submit" name="add" id='add'>Vaciar carrito</button></a></div>
 
 </body>

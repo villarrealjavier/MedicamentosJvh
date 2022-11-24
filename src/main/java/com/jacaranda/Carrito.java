@@ -16,7 +16,8 @@ public class Carrito {
 		if(item!=null) {
 			for (Item c : listShopping) {
 				if(c.getMedicine().equals(item.getMedicine())) {
-					c.setPrice(c.getPrice()*item.getQuantity());
+					c.setQuantity(item.getQuantity());
+					c.setPrice(item.getMedicine().getPrice()*c.getQuantity());
 					contiene=true;
 					
 				}

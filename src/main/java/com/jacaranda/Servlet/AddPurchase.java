@@ -1,6 +1,8 @@
 package com.jacaranda.Servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,22 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.jacaranda.CRUDMedicine;
+import com.jacaranda.CRUDCarrito;
 import com.jacaranda.Carrito;
 import com.jacaranda.Item;
-import com.jacaranda.Medicine;
+import com.jacaranda.Users;
+import com.jacaranda.UtilUsers;
+import com.jacaranda.purchase;
 
 /**
- * Servlet implementation class AddToCart
+ * Servlet implementation class AddPurchase
  */
-@WebServlet("/AddToCart")
-public class AddToCart extends HttpServlet {
+@WebServlet("/AddPurchase")
+public class AddPurchase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddToCart() {
+    public AddPurchase() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +40,7 @@ public class AddToCart extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		response.getWriter().append(ListMedicine.paginaError());
 	}
 
 	/**
@@ -45,18 +49,25 @@ public class AddToCart extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-	
- 		int cant = Integer.valueOf(request.getParameter("cant"));
-		Integer id = Integer.valueOf(request.getParameter("annadirCarro"));
-		Medicine m = CRUDMedicine.getMedicineId(id).get(0);
-		Item i = new Item(cant, m,m.getPrice()); 
-		
+		 ServletContext context = this.getServletContext();
+  		 RequestDispatcher dispacher = context.getRequestDispatcher("/ListMedicine");
 		Carrito c = (Carrito) session.getAttribute("carrito");
-		if(c==null) {
-			c= new Carrito();
+		Iterator<Item> iterador = c.getListShopping().iterator();
+		
+		String name = (String) session.getAttribute("usuario");
+		Users usuario = UtilUsers.getUser(name);
+		while(iterador.hasNext()){
+			Item it = iterador.next();
+			Integer cantidad = Integer.valueOf(request.getParameter(it.getMedicine().getName()));
+			purchase p = new purchase(it.getMedicine(),usuario,LocalDateTime.now(),it.getMedicine().getPrice()*cantidad,cantidad);
+			CRUDCarrito.savePurchase(p);
+			
+			
 		}
-		c.addItem(i);
-		response.sendRedirect("Carrito.jsp");
+		c.vaciarCarrito(c.getListShopping());
+
+		dispacher.forward(request, response);
+		
 	}
 
 }

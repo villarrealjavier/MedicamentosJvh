@@ -51,6 +51,7 @@ public class ListMedicine extends HttpServlet {
 		String usuario= request.getParameter("user");
     	String password = request.getParameter("password");
     	
+    	
 		
 	     
 	   	//COMPROBAMOS SI ES NULO E INTENTAMOS RECOGER LOS VALORES DE LA SESION PARA SEGUIR NAVEGANDO
@@ -121,18 +122,11 @@ public class ListMedicine extends HttpServlet {
 	    					+ "<td>" + m.getName()+ "</td>"
 	    					+ "<td>" + m.getDescription() + "</td>"
 	    					+ "<td>" + m.getPrice() + "</td>"
-	    					+ "<td>" + m.getCategory().getName() + "</td>");
-	    					if(!c.contieneMedicina(m)) {
-	    						response.getWriter().append( "<td> <form action='AddToCart' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart "
-	    		    					);
-	    						
-	    					}else {
-	    						response.getWriter().append( "<td> <button type='submit' name='annadirCarro'> Added"
-	    					); 
-	    					}
-	    					response.getWriter().append("<td> <input type='number' class='cant' name='cant' min=1 max=50 value=1></td><tr></form>");
+	    					+ "<td>" + m.getCategory().getName() + "</td>"
+	    					+ "<td> <form action='AddToCart' method='POST'><button type='submit' name='annadirCarro' value="+m.getId()+"> Add to Cart "
+	    					+ "<td> <input type='number' class='cant' name='cant' min=1 max=50 value=1></td><tr></form>");
+	    				}	
 	    					
-	    					}
 	    				
 	    				response.getWriter().append( "<input type='hidden' name='user' value='"+usuario+"'>"
 	    				+ "<input type='hidden' name='user' value='"+password+"'>"
@@ -142,7 +136,7 @@ public class ListMedicine extends HttpServlet {
 	    				+ "</head>"
 	    				+ "</html>");
 	    		
-	            		
+	    					
 	    	} else { 
 	       		response.getWriter().append(paginaError());
 	  	 	}
@@ -150,7 +144,7 @@ public class ListMedicine extends HttpServlet {
 		
 	}
 
-	private String paginaError() {
+	public static String paginaError() {
 		return "<!DOCTYPE html>\n"
 				+ "<html>\n"
 				+ "<head>\n"

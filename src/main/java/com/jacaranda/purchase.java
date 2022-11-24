@@ -1,6 +1,7 @@
 package com.jacaranda;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,9 +15,9 @@ public class purchase {
 	@Id
 	@ManyToOne
 	@JoinColumn(
-			name="id", insertable = false, updatable=false
+			name="idMedicine", insertable = false, updatable=false
 			)
-	private Medicine medicine;
+	private Medicine idMedicine;
 	@Id
 	@ManyToOne
 	@JoinColumn(
@@ -24,16 +25,16 @@ public class purchase {
 			)
 	private Users user;
 	@Id
-	private LocalDate purchase_date;
+	private LocalDateTime purchase_date;
 	private Double purchase_price;
 	private int cuantity;
 	
 	
 	
 	
-	public purchase(Medicine medicine, Users user, LocalDate purchase_date, Double purchase_price, int cuantity) {
+	public purchase(Medicine medicine, Users user, LocalDateTime purchase_date, Double purchase_price, int cuantity) {
 		super();
-		this.medicine = medicine;
+		this.idMedicine = medicine;
 		this.user = user;
 		this.purchase_date = purchase_date;
 		this.purchase_price = purchase_price;
@@ -41,10 +42,10 @@ public class purchase {
 	}
 	
 	public Medicine getMedicine() {
-		return medicine;
+		return idMedicine;
 	}
 	public void setMedicine(Medicine medicine) {
-		this.medicine = medicine;
+		this.idMedicine = medicine;
 	}
 	public Users getUser() {
 		return user;
@@ -52,10 +53,10 @@ public class purchase {
 	public void setUser(Users user) {
 		this.user = user;
 	}
-	public LocalDate getPurchase_date() {
+	public LocalDateTime getPurchase_date() {
 		return purchase_date;
 	}
-	public void setPurchase_date(LocalDate purchase_date) {
+	public void setPurchase_date(LocalDateTime purchase_date) {
 		this.purchase_date = purchase_date;
 	}
 	public Double getPurchase_price() {
