@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.jacaranda.CRUDCarrito;
+import com.jacaranda.CRUDPurchase;
 import com.jacaranda.Carrito;
 import com.jacaranda.Item;
 import com.jacaranda.Users;
@@ -60,7 +61,13 @@ public class AddPurchase extends HttpServlet {
 			Item it = iterador.next();
 			Integer cantidad = Integer.valueOf(request.getParameter(it.getMedicine().getName()));
 			purchase p = new purchase(it.getMedicine(),usuario,LocalDateTime.now(),it.getMedicine().getPrice()*cantidad,cantidad);
-			CRUDCarrito.savePurchase(p);
+			try {
+				CRUDPurchase.restarCantidad(p);
+				CRUDCarrito.savePurchase(p);
+				
+			}catch(Exception e) {
+				response.sendRedirect("error.jsp");
+			}
 			
 			
 		}
@@ -68,6 +75,31 @@ public class AddPurchase extends HttpServlet {
 
 		dispacher.forward(request, response);
 		
+	}
+	public static String paginaError() {
+		return "<!DOCTYPE html>\n"
+				+ "<html>\n"
+				+ "<head>\n"
+				+ "<meta charset=\"ISO-8859-1\">\n"
+				+ "<title>Error 404</title>\n"
+				+ "		<link rel=\"stylesheet\" type=\"text/css\" href=\"css/error.css\">\n"
+				+ " \n"
+				+ "</head>\n"
+				+ "<body background=\"images/errorPagina.png\">\n"
+				+ "      <a href=\"Index.jsp\"><img src=\"images/iconoSinFondo.png\" width=\"160px\" height=\"120px\" id=\"logo\"></a> \n"
+				+ "            <hr>\n"
+				+ "            <div id=\"izq\">\n"
+				+ "                \n"
+				+ "                <img src=\"images/error.png\" id=\"iconoError\">\n"
+				+ "            </div>\n"
+				+ "            <div id=\"der\">\n"
+				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
+				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hay suficiente stock<br> Pulse en el icono para ir al login.</FONT></h3>\n"
+				+ "                <h7 id=\"codError\">Codigo de error: 303</h7>\n"
+				+ "            </div>\n"
+				+ "</body>\n"
+				+ "</html>\n"
+				+ "</html>";
 	}
 
 }

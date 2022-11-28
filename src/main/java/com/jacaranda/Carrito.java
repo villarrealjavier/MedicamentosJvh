@@ -18,6 +18,8 @@ public class Carrito {
 				if(c.getMedicine().equals(item.getMedicine())) {
 					c.setQuantity(item.getQuantity());
 					c.setPrice(item.getMedicine().getPrice()*c.getQuantity());
+//					item.getMedicine().setStock(item.getMedicine().getStock()-item.getQuantity());
+
 					contiene=true;
 					
 				}
@@ -25,6 +27,7 @@ public class Carrito {
 			if(contiene==false) {
 				
 				listShopping.add(item);
+//				item.getMedicine().setStock(item.getMedicine().getStock()-item.getQuantity());
 				
 				
 			}

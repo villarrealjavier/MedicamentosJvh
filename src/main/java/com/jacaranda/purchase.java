@@ -29,7 +29,9 @@ public class purchase {
 	private Double purchase_price;
 	private int cuantity;
 	
-	
+	public purchase() {
+		
+	}
 	
 	
 	public purchase(Medicine medicine, Users user, LocalDateTime purchase_date, Double purchase_price, int cuantity) {

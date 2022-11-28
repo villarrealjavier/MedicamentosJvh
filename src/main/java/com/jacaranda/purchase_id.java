@@ -1,10 +1,12 @@
 package com.jacaranda;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class purchase_id implements Serializable{
 	private int idMedicine;
 	private String user;
+	private LocalDateTime purchase_date;
 
 	
 	public purchase_id() {
