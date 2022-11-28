@@ -225,7 +225,7 @@ CREATE TABLE `purchase` (
   `cod` int(11) NOT NULL,
   `cuantity` int(11) NOT NULL,
   
-     CONSTRAINT pk_cod PRIMARY KEY (cod,idMedicine,user),
+     CONSTRAINT pk_cod PRIMARY KEY (purchase_date,idMedicine,user),
     CONSTRAINT fk_pr FOREIGN KEY (idMedicine) REFERENCES Medicine(id),
     CONSTRAINT fk_pur FOREIGN KEY (user) REFERENCES Users(user)
   

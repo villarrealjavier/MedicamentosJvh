@@ -16,7 +16,7 @@ public class CRUDPurchase {
 		
 }
 	public static void restarCantidad(purchase p) throws Exception {
-		if(p.getMedicine().getStock()!=null && p.getMedicine().getStock()>p.getCuantity() && p.getMedicine().getStock()>0) {
+		if((p.getMedicine().getStock()!=null && p.getMedicine().getStock()>p.getCuantity()) && (p.getMedicine().getStock()>0)) {
 			p.getMedicine().setStock(p.getMedicine().getStock()-p.getCuantity());
 			
 		}else {

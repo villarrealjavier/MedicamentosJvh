@@ -24,12 +24,14 @@
 <!-- <form action="" method="POST"> -->
 <form action="AddPurchase" method="POST">
 <%
-Carrito c=(Carrito) session.getAttribute("carrito");
-Iterator<Item> iterador = c.getListShopping().iterator();
+	Carrito c=(Carrito) session.getAttribute("carrito");
 if(c==null){
-	c = new Carrito();
+	response.sendRedirect("error.jsp");
 	
-}
+}else{
+	
+
+	Iterator<Item> iterador = c.getListShopping().iterator();
 
 while(iterador.hasNext()){%>
 <%Item it = iterador.next(); %>
@@ -52,6 +54,6 @@ while(iterador.hasNext()){%>
         <div class="botones">
         <button type="submit" name="add" id='add'>Buy now</button></a></form>
         <a href="vaciarCarrito.jsp"><button type="submit" name="add" id='add'>Vaciar carrito</button></a></div>
-
+<%} %>
 </body>
 </html>

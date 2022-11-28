@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Error</title>
-	<link rel="stylesheet" type="text/css" href="css/styleError.css">
+	<link rel="stylesheet" type="text/css" href="css/error.css">
 </head>
 
 <body background="images/fondo.svg">
-      <a href="Index.jsp"><img src="images/icono2.png" width="110px" height="100px" id="logo"></a> 
+      <a href="Index.jsp"><img src="images/iconoSinFondo.png" width="110px" height="100px" id="logo"></a> 
             <hr>
             <div id="izq">
                 

@@ -46,7 +46,7 @@
 	            <input type="hidden" name="admin" id="admin" value="0">
 	            
 	           
-                <p>  <input type="submit" id="Enviar" value="Enviar"> <a href="Login.jsp"><b>Volver</b></a></p>
+                <p>  <input type="submit" id="Enviar" value="Enviar"> <a href="Index.jsp"><b>Volver</b></a></p>
           	</form>
        	</div>
    	</div>
