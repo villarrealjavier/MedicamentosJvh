@@ -41,7 +41,7 @@ public class AddPurchase extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append(ListMedicine.paginaError());
+		response.getWriter().append(ListMedicine.paginaError()); //Pagina de error en caso de acceder por GET
 	}
 
 	/**
@@ -49,19 +49,20 @@ public class AddPurchase extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//Recupero la session
 		HttpSession session = request.getSession();
 		 ServletContext context = this.getServletContext();
   		 RequestDispatcher dispacher = context.getRequestDispatcher("/ListMedicine");
-		Carrito c = (Carrito) session.getAttribute("carrito");
-		if(c==null) {
+		Carrito c = (Carrito) session.getAttribute("carrito"); //Recupero el carrito para añadir los productos
+		if(c==null) { //Si el carrito es nulo, en caso de error, lanzo la página de error
 			response.sendRedirect("error.jsp");
-		}else {
+		}else {//Si esta correctamente recorro la lista de Items
 			
 		
 		Iterator<Item> iterador = c.getListShopping().iterator();
 		
-		String name = (String) session.getAttribute("usuario");
-		Users usuario = UtilUsers.getUser(name);
+		String name = (String) session.getAttribute("usuario"); //Obtengo el nombre del usuario para asignarle la compra
+		Users usuario = UtilUsers.getUser(name); //Recupero el usuario con el metodo de buscar usuario por nombre
 		while(iterador.hasNext()){
 			Item it = iterador.next();
 			Integer cantidad = Integer.valueOf(request.getParameter(it.getMedicine().getName()));
@@ -93,7 +94,9 @@ public class AddPurchase extends HttpServlet {
 				+ " \n"
 				+ "</head>\n"
 				+ "<body background='images/errorPagina.png'>"
-				+ "      <a href='Index.jsp'><img src='images/iconoSinFondo.png' width=\"110px\" height=\"100px\" id=\"logo\"></a> \n"
+				+ "<form action=\"ListMedicine\" method=\"post\">\r\n"
+				+ "			<button><img src=\"images/iconoSinFondo.png\" width=\"120px\" height=\"80px\" id=\"logo\"></button>\r\n"
+				+ "	</form>"
 				+ "            <hr>\n"
 				+ "            <div id=\"izq\">\n"
 				+ "                \n"
@@ -101,7 +104,7 @@ public class AddPurchase extends HttpServlet {
 				+ "            </div>\n"
 				+ "            <div id=\"der\">\n"
 				+ "                <h1 id=\"TextoGrande\"><FONT color=\"black\">¡Vaya!</FONT></h1>\n"
-				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hay suficiente stock<br> Pulse en el icono para ir al login.</FONT></h3>\n"
+				+ "                <h3 id=\"TextoChico\"><FONT color=\"black\">No hay suficiente stock<br> Pulse en el icono para ir devuelta al listado.</FONT></h3>\n"
 				+ "                <h7 id=\"codError\">Codigo de error: 303</h7>\n"
 				+ "            </div>\n"
 				+ "</body>\n"

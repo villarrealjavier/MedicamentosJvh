@@ -45,35 +45,41 @@ public class AddMedicineMethod extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		//Recupero la session
 		HttpSession session = request.getSession();
 		String usuario = (String) session.getAttribute("usuario");
 	  	String password = (String) session.getAttribute("password");
-	  	 if(usuario==null && password==null) {
+	  	 if(usuario==null && password==null) { //Compruebo si este es nulo, para meter página de error
 	  		response.getWriter().append(paginaError());
-	  	 }else {
+	  	 }else { //Si no, realizo todo proceso
 	  		 ServletContext context = this.getServletContext();
 	  		 RequestDispatcher dispacher = context.getRequestDispatcher("/ListMedicine");
-	  		 List<Integer> listId = CRUDMedicine.getIdMax();
+	  		 List<Integer> listId = CRUDMedicine.getIdMax(); //Obtengo el id máximo de la base de datos para incrementarle 1
 	  		 Integer id = listId.get(0);
 	  		 String name=null;
 	  		 String description=null;
 	  		 Double price=null;
 	  		 Integer category=null;
 	  		 Category cat=null;
+	  		 Integer stock = null;
+
 	  		 
-	  		 try {
+	  		 try { //Capturo todos los valores de los inputs, y sus excepciones, si estas se producen
 	  			 name = String.valueOf(request.getParameter("nameProduct"));
 	  			 description = String.valueOf(request.getParameter("descriptionProduct"));
 	  			 price = Double.valueOf(request.getParameter("priceProduct"));
 	  			 category = Integer.valueOf(request.getParameter("category"));
 	  			 cat = CRUDCategory.getCategory(category);
+	  			 stock = Integer.valueOf(request.getParameter("stock"));
 	  			 
-	  			 
+	  			 //Si estos campos no son nulos o no estan vacios, realizo el guardado de la medicina
 	  			 if((name!=null && !name.isEmpty()) && (description!=null && !description.isEmpty())
-		  				 && (price!=null && !price.isNaN()) && (category!=null) && (cat!=null)) {
+		  				 && (price!=null && !price.isNaN()) && (category!=null) && (cat!=null) && (stock!=null)) {
 		  			 if (CRUDMedicine.getMedicineName(name).isEmpty()){
 		  				 
-		  				 Medicine m = new Medicine(id+1,name,description, price, cat);
+		  				 //Creo que la medicina e incremento el id maximo, 1 más, de esta forma se aumenta solo
+		  				 Medicine m = new Medicine(id+1,name,description, price, cat,stock);
 		  				 CRUDMedicine.saveMedicine(m);	
 		  				 dispacher.forward(request, response);
 		  				 
@@ -81,7 +87,7 @@ public class AddMedicineMethod extends HttpServlet {
 		  			 
 		  		 }
 	  		 }catch (Exception e) {
-				response.getWriter().append(paginaErrorNoAnnadir());
+				response.getWriter().append(paginaErrorNoAnnadir()); //Si no, lanzo pagina de error
 			}
 	  		 
 	  		

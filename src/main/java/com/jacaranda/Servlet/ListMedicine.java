@@ -86,11 +86,13 @@ public class ListMedicine extends HttpServlet {
 	    				+ "<link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>"
 	    				+ "</head>"
 	    				+ "<body background='posibleFondo.png'>"
-	    				+  "<a href='#'><img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'></a>"
+	    				+  "<img src='images/iconoSinFondo.png' width='160px' height='120px' id='logo'><br>"
+	    				+ "<img src='images/user.png' width='20px' height='20px'>: "+ usuario
+	    				+ "<hr>"
 	    				+ "<div align='right'>"
 	    				+ "<a href='Index.jsp'><input type='button' name='close' id='add' value='Close session' align='right'></a> -----"
-	    				+ "<a href='Carrito.jsp'><button> <img src='images/carro.png' width='30px' height='30px'>: <b>"+ c.getListShopping().size() +"  </b></button></a> ------  "
-	    				+ "<a href='Historial.jsp'><input type='button' name='history' id='history' value='Shopping History' align='right'></a> -----"
+	    				+ "<a href='Carrito.jsp'><button id='carrito'> <img src='images/carro.png' width='30px' height='30px'>: <b>"+ c.getListShopping().size() +"  </b></button></a> ------  "
+	    				+ "<a href='Historial.jsp'><input type='button' name='history' id='add' value='Shopping History' align='right'></a> -----"
 );
 			         	
 	         	if(UtilUsers.userAdminIAdmin(usuario, password)) {
@@ -116,7 +118,7 @@ public class ListMedicine extends HttpServlet {
 	    				lista = CRUDMedicine.getMedicines();
 	    				Iterator<Medicine> iterador = lista.iterator();
 	    				
-	    				while(iterador.hasNext()) {
+	    				while(iterador.hasNext()) { //Imprimo las medicinas y sus caracteristicas
 	    					 Medicine m = iterador.next();
 	    							 
 	    					response.getWriter().append("<tr>"
@@ -146,6 +148,7 @@ public class ListMedicine extends HttpServlet {
 		
 	}
 
+	//Pagina de error para usarla con contenido diferente a las demás
 	public static String paginaError() {
 		return "<!DOCTYPE html>\n"
 				+ "<html>\n"

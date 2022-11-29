@@ -13,6 +13,7 @@
 <link rel='stylesheet' type='text/css' href='css/styleTablePage.css'>
 <link rel='stylesheet' type='text/css' href='css/styles.css'>
 </head>
+<%String usuario = (String) session.getAttribute("usuario"); %>
 <body>
 <div id="header">
 	<form action="ListMedicine" method="post">
@@ -21,9 +22,10 @@
 
     	
 </div>
+<img src='images/user.png' width='20px' height='20px'>: <%=usuario %>
 <hr>
 <%
-String usuario = (String) session.getAttribute("usuario");
+
 List<purchase> listPurchase = CRUDPurchase.getPurchases(usuario);
 
 Iterator<purchase> iterador = listPurchase.iterator();%>

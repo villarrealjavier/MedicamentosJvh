@@ -40,8 +40,10 @@
 		<textarea name="descriptionProduct"  cols="40" rows="5" required></textarea><br><br>
 		<label><b>Price</b></label><br>
 		<input type="number" step="any" name="priceProduct" required><br><br>
-		<label><b>Image</b></label><br>
-		<input type="file" name="fileProduct" ><br><br>
+		<label><b>Stock</b></label><br>
+		<input type="number" name="stock" required><br><br>
+		<!-- <label><b>Image</b></label><br>
+		<input type="file" name="fileProduct" ><br><br> -->
 		<label><b>Category:</b></label><br>
 		<select name="category">
 		<%

@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/grid.css">
 <link rel="stylesheet" type="text/css" href="css/styleTablePage.css">
 </head>
+<%String usuario = (String) session.getAttribute("usuario"); %>
 <body>
 <div class="header">
 <form action="Volver.jsp" method="POST">
@@ -19,7 +20,11 @@
 	</div>
 	
 	</form>
+	
+	
 </div>
+	    <img src='images/user.png' width='20px' height='20px'>: <%=usuario %>
+<hr>
 <div class="grid-container">
 <!-- <form action="" method="POST"> -->
 <form action="AddPurchase" method="POST">
@@ -55,5 +60,7 @@ while(iterador.hasNext()){%>
         <button type="submit" name="add" id='add'>Buy now</button></a></form>
         <a href="vaciarCarrito.jsp"><button type="submit" name="add" id='add'>Vaciar carrito</button></a></div>
 <%} %>
+
+
 </body>
 </html>
