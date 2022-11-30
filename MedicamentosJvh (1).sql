@@ -222,7 +222,7 @@ CREATE TABLE `purchase` (
   `user` varchar(50) CHARACTER SET utf8 NOT NULL,
   `purchase_price` double NOT NULL,
   `purchase_date` date NOT NULL,
-  `cod` int(11) NOT NULL,
+  `cod` int(11),
   `cuantity` int(11) NOT NULL,
   
      CONSTRAINT pk_cod PRIMARY KEY (purchase_date,idMedicine,user),
